@@ -11,6 +11,7 @@ using StartCodingNowWebManager.Helpers;
 using Sakura.AspNetCore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StartCodingNowWebManager.ApiCommunicationModels.KimAnhAPI;
 
 namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
 {
@@ -29,6 +30,7 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
                 ViewBag.Search = Search;
                 if (!string.IsNullOrEmpty(Search))
                 {
+
                     model = dao.Search_Teacher(Search);
                 }
                 int pagesize = 15;
@@ -48,7 +50,7 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
         }
 
         [HttpPost]
-        public ActionResult Them(Teacher teacher)
+        public ActionResult Them(TeacherModel teacher)
         {
 
             if (dao.Insert_Teacher(teacher))
@@ -70,7 +72,7 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
             return View(bien);
         }
         [HttpPost]
-        public ActionResult Sua(Teacher teacher)
+        public ActionResult Sua(TeacherModel teacher)
         {
             if (ModelState.IsValid)
             {
