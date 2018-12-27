@@ -93,10 +93,11 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Sua(Course course, List<IFormFile> files)
         {
+            var filePath1 = Path.GetTempFileName();
             long size = files.Sum(f => f.Length);
             var uploads = Path.Combine(_env.WebRootPath.Replace("\\wwwroot", ""), "Assets\\Image");
             // full path to file in temp location
-            var filePath = Path.Combine(uploads, course.Idcourse + "update.jpg");/*"~/Assets/Image/" + course.Idcourse + "update.jpg";*/
+            var filePath = Path.Combine(uploads, course.Idcourse + "update.tmp");/*"~/Assets/Image/" + course.Idcourse + "update.jpg";*/
 
             foreach (var formFile in files)
             {
