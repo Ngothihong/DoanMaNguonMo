@@ -1,0 +1,70 @@
+﻿@model Sakura.AspNetCore.IPagedList<StartCodingNowWebManager.FF.Course>
+
+@using Sakura.AspNetCore;
+
+@{
+    ViewBag.Title = "Course";
+    Layout = "~/Areas/ADMIN/Views/Shared/_LayoutADD.cshtml";
+}
+<div class="content_table">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> <a href="@Url.Action("Course","Course")">QUẢN LÝ KHÓA HỌC</a> </h3>
+                    @using (Html.BeginForm("Course", "Course", FormMethod.Get))
+                    {
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-md-4">
+                                    <input style="color:gray" type="text" name="Search" placeholder="Nhập từ khóa cần tìm" />
+                                </div>
+                                <div class="col-md-4">
+                                    <input style="color:black" type="submit" value="Tìm" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div>
+                    <a href="@Url.Action("Them", "Course")" id="them011"> <button> Thêm Khóa Học </button> </a>
+                </div>
+                <div class="panel-body">
+
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>Tên Khóa Học</th>
+                                <th>Độ Tuổi</th>
+                                <th>Số Học Sinh Tối Đa</th>
+                                <th>Thời Lượng Khóa học</th>
+                                <th>Nội Dung Khóa Học</th>
+                                <th>Học Phí</th>
+                                <th> Hình Ảnh</th>
+                                <th colspan="2"></th>
+                            </tr>
+                        </thead>
+                        @Html.Raw(TempData["msg"])
+                        @foreach (var item in Model)
+                        {
+                            <tbody>
+                                <tr id="row_@item.Idcourse">
+                                    <td>@item.Name</td>
+                                    <td style="text-align:center">@item.Age</td>
+                                    <td style="text-align:center">@item.Maxnumber</td>
+                                    <td>@item.Time</td>
+                                    <td>@item.Contents</td>
+                                    <td>@item.Fee</td>
+                                    <td>@Url.Content(item.Image)</td>
+                                    <td> <a href="@Url.Action("Sua", "Course", new { @id = item.Idcourse})"> Sửa </a></td>
+                                    <td> <a href="@Url.Action("Xoa", "Course", new { @id = item.Idcourse})"> Xóa </a></td>
+                                </tr>
+                            </tbody>
+                        }
+                    </table>
+                    <pager source="@Model" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+﻿
+@model Sakura.AspNetCore.IPagedList<StartCodingNowWebManager.ApiCommunicationModels.ThanhDatAPI.ProductModel>
+@using Sakura.AspNetCore;
+@{
+    ViewBag.Title = "RoBo";
+    Layout = "~/Areas/ADMIN/Views/Shared/_LayoutADD.cshtml";
+}
+
+@if (Model != null)
+{
+    <h2>RoBo</h2>
+    <p>
+        @Html.ActionLink("Create New", "Them")
+    </p>
+    <form action="RoBo">
+        <div>
+            <input style="width:200px;float:right" class="search" name="tk" type="search" required />
+            <input type="submit" value="Tìm kiếm" style="float:right" />
+        </div>
+    </form>
+    <table class="table">
+        <tr style="border:solid 1px">
+            <th>
+                ID_ROBOT
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Number
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Contents
+            </th>
+            <th>
+                State
+            </th>
+            <th></th>
+        </tr>
+        @Html.Raw(TempData["msg"])
+        @foreach (var item in Model)
+        {
+            <tr id="phanke" style="border:solid 1px">
+                <td style="border:solid 1px">
+                    @Html.DisplayFor(modelItem => item.Idrobot)
+                </td>
+                <td style="border:solid 1px">
+                    <img src="@Url.Content(item.Image)" />
+                </td>
+                <td style="border:solid 1px">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td style="border:solid 1px">
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td style="border:solid 1px">
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td style="border:solid 1px">
+                    @Html.DisplayFor(modelItem => item.Contents)
+                </td>
+                <td style="border:solid 1px">
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td style="border:solid 1px">
+                    @Html.ActionLink("Sua", "Sua", new { id = item.Idrobot }) <br />
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Idrobot })
+                </td>
+            </tr>
+        }
+        <nav class="in">
+            <ul class="pagination">
+                <pager source="@Model" />
+            </ul>
+        </nav>
+    </table>
+}
+else
+{
+    <h4>Có vấn đề khi kết nối đến ThanhDatAPI</h4>
+}
+

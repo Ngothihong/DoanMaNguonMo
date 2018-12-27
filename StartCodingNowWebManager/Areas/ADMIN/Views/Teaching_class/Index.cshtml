@@ -1,0 +1,87 @@
+﻿
+@model Sakura.AspNetCore.IPagedList<StartCodingNowWebManager.Areas.ADMIN.Models.Teaching_Model>
+@using Sakura.AspNetCore;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ADMIN/Views/Shared/_LayoutADD.cshtml";
+}
+
+<div class="content_table">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> QUẢN LÝ CHẤM CÔNG </h3>
+                    @using (Html.BeginForm("GiaoVien", "GiaoVien", FormMethod.Get))
+                    {
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-md-4">
+                                    <input style="color:gray" type="text" name="Search1" value="Nhập từ khóa cần tìm" />
+                                </div>
+                                <div class="col-md-4">
+                                    <input style="color:black" type="submit" value="Tìm" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="panel-body">
+                    @using (Html.BeginForm("Search", "Teaching_class", FormMethod.Post))
+                    {
+                        <div>
+                            <div class="search_khoahoc" style="padding-top:20px; padding-left:0px">
+                                <div style="float:left;margin-left:10px">
+                                    <h4 style="float:left; font-family:'Times New Roman'; margin-top:8px">Lớp học</h4>
+                                    @Html.DropDownList("lop", null, new { @id = "txtName", @type = "text", @style = "width:200px; height:30px ; border:groove;  margin-left:20px" })
+                                    @*<input type="text" style="width:100px; height:30px ; border:groove;  margin-left:20px" />*@
+                                </div>
+                                @*<div style="float:left; ">
+                    <h4 style="float:left; font-family:'Times New Roman'; margin-top:8px;margin-left: 20px;">Buổi học</h4>
+                    @Html.DropDownList("session", null, "--Chọn buổi--", new { @type = "text", @style = "width:200px; height:30px ; border:groove;  margin-left:20px" })
+                    @*<input type="text" style="width:100px; height:30px ; border:groove;  margin-left:20px" />*@
+                                @*</div>*@
+                                <div style="float:left;margin-left:10px">
+                                    <h4 style="float:left; font-family:'Times New Roman'; margin-top:8px">Tháng/Năm</h4>
+                                    @Html.Editor("day", new { htmlAttributes = new { @type = "date", @style = "width:150px; height:30px ; border:groove;  margin-left:20px" } })
+                                </div>
+                                <div>
+                                    <input type="submit" value="TÌM KIẾM" style="border:groove;  margin-left:20px" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>Mã lớp</th>
+                                <th>Tên lớp</th>
+                                <th>Giáo viên</th>
+                                <th>Buổi</th>
+                                <th>Ngày</th>
+                            </tr>
+                        </thead>
+                        @Html.Raw(TempData["msg"])
+                        @foreach (var item in Model)
+                        {
+                            <tbody>
+                                <tr id="row_@item.IDTeacher">
+                                    <td>@item.IDClass</td>
+                                    <td>@item.NameClass</td>
+                                    <td>@item.Nameteacher</td>
+                                    <td>@item.session</td>
+                                    <td>@item.Day</td>
+                                </tr>
+                            </tbody>
+
+                        }
+                    </table>
+                    <pager source="@Model" />
+                    <a class="color4" href="@Url.Action("Index","Teaching_class")"><h5 style="color: blue;"> Load again</h5></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

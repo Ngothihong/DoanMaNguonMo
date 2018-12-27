@@ -1,0 +1,10 @@
+﻿
+
+*.label {
+    padding-left: 50px;
+    padding-right: 23px
+}
+*.input {
+    padding-right: 50px;
+    height: 30px
+}

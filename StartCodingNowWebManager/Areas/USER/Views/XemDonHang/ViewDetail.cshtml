@@ -1,0 +1,36 @@
+﻿@model IEnumerable<StartCodingNowWebManager.Areas.USER.Models.ViewDonHang>
+@{
+    ViewBag.Title = "ViewChiTiet";
+    Layout = "~/Areas/USER/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Assets/USER/css/controller/x.css" rel="stylesheet" />
+<div class="container-fluid">
+    @foreach (var item in Model)
+    {
+        <div class="cart-header">
+            <div class="cart-sec simpleCart_shelfItem">
+                <div class="cart-item cyc">
+                    <img src="@Url.Content(item.Image)" class="img-responsive" alt="" />
+                </div>
+                <div class="cart-item-info">
+                    <h3 style="margin-top:15px"><a href="chi-tiet-san-pham?id=@item.IDRobot" style="font-size:x-large;margin-top:25px">@item.Name</a></h3>
+                    <span style="font-size:large"><strong style="padding-top:25px"> Mã sản phẩm :</strong> @item.IDRobot</span>
+                    <br /><br />
+                    <ul class="view_ct">
+
+                        <li><p>Số lượng :@item.Number </li>
+                        <li><p> Giá : @item.Price</p></li>
+                    </ul>
+
+                    <div class="delivery1">
+                        <p>Thành Tiền : @(item.Price.GetValueOrDefault(0) * item.Number) </p>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+        </div>
+    }
+</div>

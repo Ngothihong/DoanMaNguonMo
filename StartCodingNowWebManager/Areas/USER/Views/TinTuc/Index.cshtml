@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/USER/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+   
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CLato:300,400" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="~/Assets/Article/magnews/css/bootstrap.min.css" />
+
+    <!-- Owl Carousel -->
+    <link type="text/css" rel="stylesheet" href="~/Assets/Article/magnews/css/owl.carousel.css" />
+    <link type="text/css" rel="stylesheet" href="~/Assets/Article/magnews/css/owl.theme.default.css" />
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="~/Assets/Article/magnews/css/font-awesome.min.css">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="~/Assets/Article/magnews/css/style.css" />
+
+
+
+</head>
+<div class="container">
+    <!-- ROW -->
+    <div class="row">
+        <!-- Main Column -->
+        <div class="col-md-12">
+            <!-- section title -->
+            @Html.RenderAction("Menu", "TinTuc")"
+            <!-- /section title -->
+            <!-- Tab content -->
+            <div class="tab-content">
+                <!-- tab1 -->
+                <div id="tab1" class="tab-pane fade in active" style="background-color:#ffffff">
+                    <!-- row -->
+                    <div class="row">
+
+                        @Html.RenderAction("ListNews", "TinTuc")
+                    </div>
+                    <!-- /row -->
+                    <!-- row -->
+                    <!-- /row -->
+                </div>
+                <!-- /tab1 -->
+            </div>
+            <!-- /tab content -->
+        </div>
+        <!-- /Main Column -->
+    </div>
+    <!-- /ROW -->
+</div>
+    
+    
+
+

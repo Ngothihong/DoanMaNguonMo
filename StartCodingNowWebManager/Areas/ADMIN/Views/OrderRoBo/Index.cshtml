@@ -1,0 +1,105 @@
+﻿
+@model Sakura.AspNetCore.IPagedList<StartCodingNowWebManager.ApiCommunicationModels.ThanhDatAPI.OrdersModel>
+
+@using Sakura.AspNetCore;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ADMIN/Views/Shared/_LayoutADD.cshtml";
+}
+
+<link href="~/Assets/USER/css/controller/x.css" rel="stylesheet" />
+<script src="~/Assets/USER/js/jquery.min.js"></script>
+<div class="container-fluid">
+    <form action="Index">
+        <div>
+            <input type="date" name="nkq" id="nkq" style="float:left; width:200px;height:25px" />
+            <input type="submit" value="Tìm kiếm" style="float:left" />
+        </div>
+    </form>
+    <form action="OrderRoBo/Index">
+        <div>
+            <input style="width:200px;float:right" class="search" name="tk" type="search" required />
+            <input type="submit" value="Tìm kiếm" style="float:right" />
+        </div>
+    </form>
+    @foreach (var item in Model)
+    {
+        <div class="cart-header" style="background-color:gray">
+            <div class="cart-sec simpleCart_shelfItem">
+                <div class="cart-item-info">
+                    <h3><a href="#"></a></h3>
+                    <table width="850px" style="background-color:aqua">
+                        <tr style="height:30px">
+                            <td colspan="3"><span><b> Mã Hóa Đơn :</b> @item.Idorders</span></td>
+                        </tr>
+                        <tr style="height:30px">
+                            <td><b>Tên KH :</b> @item.NameCustomer</td>
+                            <td width="200px"><b>Số lượng SP :</b> @item.NumberProduct</td>
+                            <td><b> Ngày :</b> @item.Date</td>
+                        </tr>
+                        <tr style="height:30px">
+                            <td><p><b> Địa Chỉ :</b> @item.Address</p></td>
+                            <td colspan="2"><p><b> Ghi Chú :</b> @item.Note</p></td>
+                        </tr>
+                        <tr style="height:30px">
+                            <td>
+                                <p> <b> Phương Thức Thanh Toán :</b> @item.Payment</p>
+                            </td>
+
+                            @if (item.Verify == true)
+                            {
+                                <td><strong> Đã Xác Nhận Email </strong> </td>}
+                            else
+                            {
+                                <td><strong> Chưa Xác Nhận Email </strong> </td>
+                            }
+                            <td><a href="OrderRoBo/Details?id=@item.Idorders" class="xem_ct">Xem Chi Tiết</a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-3 cart-total" style="width:900px">
+                    <div style="margin-top:30px ">
+                        <div style="width:300px;float:left">
+                            <span style="font-size:large; padding-left:30px "> <b>TOTAL : </b></span>
+                            <span style="font-size:large; margin-left:5px">@item.PriceTotal</span>
+                            @{if (item.State != 0 && item.State != 3)
+                                {
+                                    <a href="OrderRoBo/Edit?id=@item.Idorders" class="xem_ct" style="width:200px">Cập Nhật</a>
+                                }
+                            }
+                        </div>
+                        @{ if (item.State == 0)
+                            {
+                                <div class="tt_huy" style="height:40px ;font-size:x-large;width:300px;float:right"><strong style="color:aliceblue"> Hóa Đơn Đã Hủy</strong></div>
+                            }
+                            else if (item.State == 1)
+                            {
+                                <a href="OrderRoBo/Huy?id=@item.Idorders" class="xem_ct" style="width:200px ;background-color:gainsboro ; float:right;font-size:x-large">Hủy</a>
+                                <div class="tt" style="width:200px;float:left"><strong style="color:aliceblue"> Chưa Giao</strong></div>
+                            }
+                            else if (item.State == 2)
+                            {
+
+                                <div class="tt" style="width:200px;float:left;font-size:x-large"><strong style="color:cornsilk">Đang Giao</strong></div>
+                            }
+                            else if (item.State == 3)
+                            {
+                                <div class="tt" style="margin-top:10px;
+
+    background-color: lawngreen;
+    text-align: center;
+    width:300px;height:50px;float:right;font-size:xx-large;padding-bottom:20px"><strong style="color: antiquewhite">Hoàn Thành</strong></div>
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    }
+    <nav class="in">
+        <ul class="pagination">
+            <pager source="@Model" />
+        </ul>
+    </nav>
+</div>

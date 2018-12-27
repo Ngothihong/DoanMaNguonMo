@@ -1,0 +1,45 @@
+﻿@model  StartCodingNowWebManager.Areas.GIAOVIEN.Models.Acount_model
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/GIAOVIEN/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Assets/GIAOVIEN/css/gv.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="~/Assets/GIAOVIEN/js/JavaScript.js"></script>
+
+
+<h4 align="left" style="color:blue; padding-top:30px">
+    <b>
+        <a href="@Url.Action("Index","thongtin")">Giáo viên</a>/
+        <a href="@Url.Action("Index","matkhau")">Ðổi mật khẩu</a>
+    </b>
+</h4><br />
+@Html.Raw(TempData["msg"])
+@using (Html.BeginForm("ChangePassword", "matkhau", FormMethod.Post, new { @onsubmit = "return matchpass()" }))
+{
+    <div class="row" style="height:400px;">
+        <table align="center">
+            <tr style="height: 70px">
+                <td style="width:25%;"><b>Mật khẩu cũ:</b></td>
+                <td>@Html.TextBoxFor(Model => Model.oldpass, new { @type = "password", @name = "password0", @id = "0", @size = "50", @style = "margin-bottom:10px; height: 40px" })</td>
+
+            </tr>
+            <tr style="height: 70px">
+                <td style="width:25%;"><b>Mật khẩu mới:</b></td>
+                <td>@Html.TextBoxFor(Model => Model.newpass, new { @type = "password", @name = "password1", @id = "1", @size = "50", @style = "margin-bottom:10px;height: 40px" })</td>
+
+            </tr>
+            <tr style="height: 70px">
+                <td style="width:25%;"><b>Nhập mật khẩu mới:</b></td>
+                <td><input type="password" name="password2" id="2" size="50" style="margin-bottom:10px;;height: 40px" /></td>
+            </tr>
+        </table>
+        <b><input type="submit" name="btchange" value="LƯU" style="margin-left:45%;" /></b>
+        <div>
+        </div>
+       
+
+    </div>
+}
+
+
+

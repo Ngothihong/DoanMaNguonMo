@@ -1,0 +1,81 @@
+﻿
+@model Sakura.AspNetCore.IPagedList<StartCodingNowWebManager.ApiCommunicationModels.ThanhDatAPI.ProductModel>
+
+@using Sakura.AspNetCore;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/USER/Views/Shared/_Layout.cshtml";
+}
+<div class="product">
+    <div class="container">
+        <div class="col-md-3 product-price">
+            <div class=" rsidebar span_1_of_left">
+                <div class="of-left">
+                    <h3 class="cate">Tìm Kiếm</h3>
+                </div>
+                <form>
+                    <input type="search" name="txt_search" style="width:150px" class="search" placeholder="Nhập Mã SP hoặc Tên SP" />
+                    <input type="submit" id="sm_search" class="search" value="Tìm" />
+                </form>
+
+                <br />
+
+                <img class="img-responsive" src="~/Assets/Image/st_1.jpg" style="height:225px;width:225px" alt="">
+                <img style="margin-top: 35px; margin-bottom: 35px" class="img-responsive" src="~/Assets/Image/st_2.jpg" alt="">
+            </div>
+
+            <!--initiate accordion-->
+
+            <script type="text/javascript">
+                $(function () {
+                    var menu_ul = $('.menu > li > ul'),
+                        menu_a = $('.menu > li > a');
+                    menu_ul.hide();
+                    menu_a.click(function (e) {
+                        e.preventDefault();
+                        if (!$(this).hasClass('active')) {
+                            menu_a.removeClass('active');
+                            menu_ul.filter(':visible').slideUp('normal');
+                            $(this).addClass('active').next().stop(true, true).slideDown('normal');
+                        } else {
+                            $(this).removeClass('active');
+                            $(this).next().stop(true, true).slideUp('normal');
+                        }
+                    });
+
+                });
+            </script>
+            <!---->
+            <!---->
+
+
+        </div>
+        <div class="col-md-9 product1">
+            <div class=" bottom-product">
+                @foreach (var items in Model)
+                {
+                    <div class="col-md-4 bottom-cd simpleCart_shelfItem" style="margin-top:5%">
+                        <div class="product-at ">
+                            <a href="/USER/RoBo/Detail/@items.Idrobot">
+                                <img class="img-responsive" src="@Url.Content(items.Image)" style="height:230px ; width:220px" alt="">
+                            </a>
+                        </div>
+                        <p class="tun">@Html.DisplayFor(model => items.Name) </p>
+                        <h4 style="color:red; text-align:center">@items.Price</h4>
+                        <a href="/USER/Cart/AddItems/?id=@items.Idrobot&&number=1" class="item_add"><p class="number item_price">Add To Cart</p></a>
+                    </div>
+                }
+                <div class="clearfix"> </div>
+            </div>
+
+        </div>
+        <div class="clearfix"> </div>
+        <pager source="@Model" />
+        @*<nav class="in">
+                <ul class="pagination">
+                    @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page }))
+                </ul>
+            </nav>*@
+    </div>
+</div>

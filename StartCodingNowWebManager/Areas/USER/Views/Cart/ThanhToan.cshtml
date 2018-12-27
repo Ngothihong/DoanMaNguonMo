@@ -1,0 +1,88 @@
+﻿@model List<StartCodingNowWebManager.Areas.USER.Models.Cart_items>
+
+@{
+    ViewBag.Title = "ThanhToan";
+    Layout = "~/Areas/USER/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    var tien = 0;
+    int count = 0;
+    foreach (var item in Model)
+    {
+        
+         tien = tien + ((int)item.product.Price * item.Quantity);
+        count += 1;
+    }
+}
+<form asp-action="ThanhToan" asp-controller="Cart" asp-area="USER" method="post">
+
+    <div class="col-md-4 register-bottom-grid" style="width: 100%;
+    margin-left: 300px;
+    padding-left: 200px;
+    margin-top: 40px;">
+        <h3 sstyle="padding-top: 50px;">Thông tin giao hàng</h3>
+        <div class="form-group">
+
+            <span>Họ Tên :</span>
+            <input type="text" style="width:250px;margin-bottom: 20px;" name="txt_hoten">
+            <span>Số Điện Thoại :</span>
+            <input type="text" style="width:250px;margin-bottom: 20px;" name="txt_sdt">
+            <span>Email</span>
+            <input type="email" style="width:250px;margin-bottom: 20px;" name="txt_email">
+            <span>Địa chỉ :</span>
+            <input type="text" style="width:250px;margin-bottom: 20px;" name="txt_diachi">
+            <span>Ghi Chú</span>
+            <input type="text" style="width:250px;margin-bottom: 20px;" name="txt_ghichu">
+            <span>Phương Thức Thanh Toán :</span>
+            <select name="txt_tt" style="width:250px;margin-bottom: 20px; height:20px">
+                <option value="Thanh Toán COD"> Thanh Toán  COD </option>
+                <option value="Thanh Toán Trực Tuyến">Thanh Toán Trực Tuyến </option>
+            </select>
+            <span  style="width:250px;margin-bottom: 20px;">
+                Số lượng sản phẩm : <label class=" text-danger"> @Model.Count </label>
+            </span>
+            <span>Mã Khuyến Mãi : </span>
+            <input type="text" id="txt_km" style="width:250px;margin-bottom: 20px;">
+            <span>
+                Tổng Tiền :<label class="text-danger" style="width:250px;margin-bottom: 20px;"> @tien </label>
+            </span>
+            <input type="submit" value="Thanh Toán" id="btn_thanhtoan">
+        </div>
+
+    </div>
+    </form>
+    @*<div class="col-md-4 register-bottom-grid">
+        <h3>Thông tin giao hàng</h3>
+        <div class="form-group">
+            <span>Địa chỉ :</span>
+            <input type="text" style="width:250px" name="txt_diachi">
+            <span>Ghi Chú</span>
+            <input type="text" style="width:250px" name="txt_ghichu">
+            <span>Phương Thức Thanh Toán :</span>
+            <select name="txt_tt">
+                <option value="Thanh Toán COD"> Thanh Toán  COD </option>
+                <option value="Thanh Toán Trực Tuyến">Thanh Toán Trực Tuyến </option>
+            </select>
+
+        </div>
+
+    </div><div class="col-md-4 register-bottom-grid">
+        <h3>Thông tin đơn hàng</h3>
+        <div class="form-group">
+            <span>
+                Số lượng sản phẩm : <label class=" text-danger"> @Model.Count </label>
+            </span>
+            <span>Mã Khuyến Mãi : </span>
+            <input type="text" id="txt_km">
+            <span>
+                Tổng Tiền :<label class="text-danger"> @tien </label>
+            </span>
+
+        </div>
+        <input type="submit" value="Thanh Toán" id="btn_thanhtoan">
+
+    </div>*@
+
+    <div class="clearfix"> </div>    

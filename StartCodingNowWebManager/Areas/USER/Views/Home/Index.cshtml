@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/USER/Views/Shared/_Layout.cshtml";
+
+}
+<div class="container">
+
+
+    <div class="slideshow-container" style="margin-left:-2.5%">
+        <div style="display:block" id="anh1" class="mySlides fade in">
+            <div>
+                <img src="/Assets/Image/pg_1.png">
+            </div>
+        </div>
+
+        <div class="mySlides fade">
+            <div>
+                <img src="/Assets/Image/pg_2.png">
+            </div>
+        </div>
+
+        <div class="mySlides fade">
+            <div>
+                <img src="~/Assets/Image/pg_3.png">
+            </div>
+        </div>
+    </div>
+    <div style="text-align:center">
+
+        <span class="dot" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        currentSlide(0);
+    });
+</script>
+<div class="content">
+    <div class="container">
+        <div class="content-top">
+            <h1>TIN TỨC</h1>
+            <div class="grid-in">
+                @Html.RenderAction("ListNews", "TinTuc")
+
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <!----->
+
+        <div class="content-top-bottom">
+            <h2>ROBOT</h2>
+            @Html.RenderAction("ListNews_SP", "Home")
+            @*@{ Html.RenderAction("SanPham", "Home");}*@
+          
+            <div class="clearfix"> </div>
+        </div>
+
+        <div class="content-top">
+            <h1>KHÓA HỌC</h1>
+            <div class="grid-in">
+                @Html.RenderAction("ListNews_Course", "Home")
+              
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+
+</div>

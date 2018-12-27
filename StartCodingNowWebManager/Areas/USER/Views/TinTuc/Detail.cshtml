@@ -1,0 +1,111 @@
+﻿@model List<StartCodingNowWebManager.ApiCommunicationModels.HongHeoAPI.ArticleModel>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/USER/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CLato:300,400" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="~/Assets/Article/magnews/css/bootstrap.min.css" />
+
+    <!-- Owl Carousel -->
+    <link type="text/css" rel="stylesheet" href="~/Assets/Article/magnews/css/owl.carousel.css" />
+    <link type="text/css" rel="stylesheet" href="~/Assets/Article/magnews/css/owl.theme.default.css" />
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="~/Assets/Article/magnews/css/font-awesome.min.css">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="~/Assets/Article/magnews/css/style.css" />
+
+
+
+</head>
+<div class="section">
+    <!-- CONTAINER -->
+    <div class="container">
+        <!-- ROW -->
+        <div class="row">
+            <!-- Main Column -->
+            <div class="col-md-8">
+                <!-- breadcrumb -->
+                @* @await Html.PartialAsync("~/Areas/USER/Views/TinTuc/Menu.cshtml")*@
+                @Html.RenderAction("Menu", "TinTuc")
+                <!-- /breadcrumb -->
+                <!-- ARTICLE POST -->
+                <article class="article article-post">
+
+                    <div class="article-main-img">
+                        <img src="~/Assets/Image/IMGAR/@ViewBag.img" alt="">
+                    </div>
+                    <div class="article-body">
+
+                        <h1 class="article-title">@ViewBag.tieude</h1>
+                        <ul class="article-meta">
+
+
+                            <li style="color:#000000"> @ViewBag.date </li>
+                            <li><p style="color:black; font-size:19px; font-family:'Times New Roman', Times, serif"</p>@ViewBag.summary</li>
+                        </ul>
+                        <p style="color:black; font-size:19px; font-family:'Times New Roman'">@ViewBag.content</p>
+
+
+
+                    </div>
+                </article>
+
+
+
+            </div>
+            <!-- /Main Column -->
+            <!-- Aside Column -->
+            <div class="col-md-4">
+                <!-- Ad widget -->
+                <div class="widget center-block hidden-xs">
+                    <img class="center-block" src="./img/ad-1.jpg" alt="">
+                </div>
+                <!-- /Ad widget -->
+                <!-- social widget -->
+                <div class="widget social-widget">
+                    <div class="widget-title">
+                        <h2 class="title" style="font-size:20px;text-align:center;color:#000000;margin-top:40px">Quảng Cáo</h2>
+                    </div>
+                    <div class="col-md-12">
+                        <img class="adnzone_37772_img" border="0" id="cpm37772" src="//adi.admicro.vn/adt/adn/2018/12/ldn-3-adx5c10f48fc8117.jpg" width="300" height="600">
+                        <iframe src="https://adi.admicro.vn/adt/banners/nam2015/4043/min_html5/lanphamthi/2018_11_05/300x600_honda/300x600_honda/300x600_honda.html?url=%2F%2Flg1.logging.admicro.vn%2Fadn%3Fdmn%3Dhttp%253A%252F%252Fgenk.vn%252Fkhoa-hoc.htm%26lsn%3D1544810566584%26ce%3D1%26lc%3D5%26cr%3D1544491630%26ui%3D1344916301953337058%26ii%3D1876576645%26bi%3D0%26cmpg%3D34173%26items%3D123031%26zid%3D23399%26cid%3D-1%26tp%3D11%26tpn%3D4%26cov%3D1%26pr%3D12365726356%26adc_cpa%3D1%26re%3Dhttps%253A%252F%252Fhondaxemay.com.vn%252Ftin-tuc%252Fhonda-viet-nam-thuc-hien-chuong-trinh-khuyen-mai-luot-lead-em-nhan-them-bao-hiem%252F%253Futm_source%253DADX%2526utm_medium%253Dbanner%2526utm_campaign%253DHONDA_LEAD_2018&amp;admid=adnzone_23399_0_123031" width="300" height="600" frameborder="0" scrolling="no" style="margin-top:20px"></iframe>
+
+
+                    </div>
+                </div>
+                <!-- /social widget -->
+                <!-- subscribe widget -->
+                <!--tin tuc khac-->
+            </div>
+            <!-- /Aside Column -->
+        </div>
+
+        <div class="row">
+            <div class="section-title">
+                <h2 class="title">Tin tức khác</h2>
+            </div>
+
+            @*@await Html.PartialAsync("~/Areas/USER/Views/TinTuc/ListNews_1.cshtml")*@
+            @Html.RenderAction("ListNews_1")
+
+        </div>
+
+
+    </div>
+
+    }
+
+</div>
+<!-- /CONTAINER -->
+

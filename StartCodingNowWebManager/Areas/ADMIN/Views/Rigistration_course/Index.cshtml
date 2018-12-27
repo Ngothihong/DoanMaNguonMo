@@ -1,0 +1,86 @@
+﻿@model IEnumerable<StartCodingNowWebManager.FF.RigistrationCourse>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ADMIN/Views/Shared/_LayoutADD.cshtml";
+}
+<h2>Đăng kí khóa học</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" border="1" style="width:1000px">
+    <tr>
+        <th>
+            <label>Tên khóa học</label>
+            @*@Html.DisplayNameFor(model => model.COURSE.Name)*@
+        </th>
+        <th>
+            <label>Tên phụ huynh</label>
+            @*@Html.DisplayNameFor(model => model.NameParent)*@
+        </th>
+        <th>
+            <label>Số điện thoại</label>
+            @*@Html.DisplayNameFor(model => model.Phone)*@
+        </th>
+        <th>
+            <label>Email</label>
+            @*@Html.DisplayNameFor(model => model.Email)*@
+        </th>
+        <th>
+            <label>Tên học viên</label>
+            @*@Html.DisplayNameFor(model => model.NameStudent)*@
+        </th>
+        <th>
+            <label>Ngày sinh</label>
+            @*@Html.DisplayNameFor(model => model.BIRTHDAY)*@
+        </th>
+        <th>
+            <label>Địa chỉ</label>
+            @*@Html.DisplayNameFor(model => model.ADDRESS)*@
+        </th>
+        <th>
+            <label>Trạng thái</label>
+            @*@Html.DisplayNameFor(model => model.State)*@
+        </th>
+        <th>
+            <label>Hoạt động</label>
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdcourseNavigation.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameParent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameStudent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Birthday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.Idregist }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.Idregist }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.Idregist })
+        </td>
+    </tr>
+}
+
+</table>

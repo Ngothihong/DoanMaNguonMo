@@ -1,0 +1,38 @@
+﻿@model List<StartCodingNowWebManager.ApiCommunicationModels.HongHeoAPI.ArticleModel>
+@using StartCodingNowWebManager.ApiCommunicationModels.HongHeoAPI;
+@using StartCodingNowWebManager.ApiCommunicationTools;
+@{
+    Layout = null;
+}
+<body>
+    @{ int i = 0;
+
+        <div class="grid-in">
+            @foreach (var item in Model)
+            {
+
+                if (i < 4)
+                {
+                    var data1 = new List<MenuArticleModel>();
+                    data1 = ApiClientFactory.HongHeoInstance.GetAllMenuArticles();
+                    <div class="col-md-3 grid-top" style="margin-top:50px">
+                        <a href="/User/TinTuc/Detail/@item.IdArticle+1" class="b-link-stripe b-animate-go  thickbox">
+                            <img class="img-responsive" src="~/Assets/Image/IMGAR/@item.Image" alt="" style="height:300px">
+                            <div class="b-wrapper">
+                                <h3 class="b-animate b-from-left    b-delay03 ">
+                                    <span>@data1.Where(t => t.IdMenu == item.IdMenu).FirstOrDefault().NameMenu</span>
+                                </h3>
+                            </div>
+                        </a>
+
+                        <p><a href="/User/TinTuc/Detail/@item.IdArticle">@item.Title</a></p>
+                    </div>
+                }
+                else { break; }
+                i++;
+            }
+
+        </div>
+    }
+
+</body>

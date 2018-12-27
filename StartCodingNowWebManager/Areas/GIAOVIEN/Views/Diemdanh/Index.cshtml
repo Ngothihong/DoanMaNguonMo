@@ -1,0 +1,74 @@
+﻿@model List<StartCodingNowWebManager.Areas.GIAOVIEN.Models.Student_Change__Attendance>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/GIAOVIEN/Views/Shared/_Layout.cshtml";
+}
+
+<h4 align="left" style="color:blue; padding-top:30px"><b>
+    <a href="@Url.Action("Index","Login")">Giáo viên</a>/
+    <a href="@Url.Action("Index","lophoc")">Danh sách lớp học</a>/
+    <a href="@Url.Action("Index","Diemdanh")">Điểm danh</a>
+</b></h4><br />
+
+         <div class="row" style=" width:100%; height:auto; border:double">
+             @using (Html.BeginForm("Xem_DiemdanhbyID", "Diemdanh", FormMethod.Post))
+             {
+
+                 <div class="search_khoahoc" style="padding-top:20px; padding-left:70px">
+                     <h4 style="float:left; font-family:'Times New Roman'; margin-top:8px">Chọn lớp học</h4>
+                     @Html.DropDownList("lopsearch", null, new { @type = "text", @style = "width:200px; height:30px ; border:groove;  margin-left:20px" })
+                     @*<input type="text" style="width:200px; height:30px ; border:groove; margin-left:20px" />*@
+                     <button type="submit" style="margin-left:20px">Tìm kiếm</button>
+                 </div>
+             }
+
+
+
+             @Html.RenderAction("UpdateDiemdanh", "Diemdanh")
+            
+             
+             
+             <div style="padding-top:20px ; margin-bottom:20px">
+                 <table align="center" border="1" style="width:98%">
+                     <tr class="table_th">
+                         <th class="th">MÃ HỌC VIÊN</th>
+                         <th class="th">TÊN HỌC VIÊN</th>
+                         <th class="th">Buổi 1</th>
+                         <th class="th">Buổi 2</th>
+                         <th class="th">Buổi 3</th>
+                         <th class="th">Buổi 4</th>
+                         <th class="th">Buổi 5</th>
+                         <th class="th">Buổi 6</th>
+                         <th class="th">Buổi 7</th>
+                         <th class="th">Buổi 8</th>
+                         <th class="th">Buổi 9</th>
+                         <th class="th">Buổi 10</th>
+                         <th class="th">Buổi 11</th>
+                         <th class="th">Buổi 12</th>
+                     </tr>
+
+                     @Html.Raw(TempData["msg"])
+                     @foreach (var item in Model)
+                     {
+
+                         <tr class="table_th">
+                             <td class="td">@item.IDStudent</td>
+                             <td class="td">@item.NameStudent</td>
+
+                             @foreach (var state in item.state)
+                             {
+                                 <td class="td">
+                                     <input type="checkbox" value="true" @(state ? "checked=\"checked\"" : "") disabled />
+                                 </td>
+
+                             }
+                         </tr>
+                     }
+
+                 </table>
+             </div>
+
+         </div>
+
+
+

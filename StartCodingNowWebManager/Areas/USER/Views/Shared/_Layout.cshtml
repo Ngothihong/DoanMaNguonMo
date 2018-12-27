@@ -1,0 +1,86 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title>STARTCODINGNOW SÀI GÒN</title>
+   @* <link href="~/Assets/USER/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />*@
+    <link href="~/Assets/USER/css/bootstrap.css" rel="stylesheet" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Assets/USER/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+    <!-- Custom Theme files -->
+    <!--theme-style-->
+    <link href="~/Assets/USER/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="New Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'><!--//fonts-->
+    <!-- start menu -->
+    <link href="~/Assets/USER/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+
+    <script type="text/javascript" src="~/Assets/USER/js/memenu.js"></script>
+    <script>$(document).ready(function () { $(".memenu").memenu(); });</script>
+    <script src="~/Assets/USER/js/simpleCart.min.js"></script>
+    <script type="text/javascript" src="~/Assets/USER/js/slideshow_banner.js"></script>
+    <script>$(function () {
+
+            $("#rateYo").rateYo({
+                rating: 3.6
+            });
+
+        });</script>
+
+</head>
+<body>
+    <!--header-->
+    <div class="header">
+        @{Html.RenderAction("Header_Cart", "Home");}
+       
+       @* @await Html.PartialAsync("~/Areas/USER/Views/Shared/Header_Cart.cshtml")*@
+    </div>
+  
+    <!--content-->
+    @RenderBody()
+    <div class="footer">
+        <div class="container">
+            <div class="footer-top-at">
+                <div class="col-md-4 amet-sed ">
+                    <h4>Liên Hệ</h4>
+                    <p style="color:darkorange">
+                        STARTCODINGNOW SÀI GÒN
+                    </p>
+                    <p>Địa chỉ: B3.01.03 - 02.03 CC Hoàng Anh Gold House (An Tiến), Phước Kiển, Nhà Bè</p>
+                    <p>sđt:  0866576855</p>
+                </div>
+                <div class="col-md-4 amet-sed">
+                    <h4>Các Hoạt Động Chính</h4>
+                    <p>Khám Phá Công Nghệ</p>
+                    <p>Làm Game và Phim Hoạt Hình</p>
+                    <p>Hoạt Động Giải Phóng Công Nghệ</p>
+                    <p>Các Hoạt Động Khác</p>
+                </div>
+                <div class="col-md-4 amet-sed">
+                    <h4>Kết nối với chúng tôi</h4>
+                    <div style="margin-left:-4%">
+                        <ul>
+                            <li><a href="#" target="_blank"><i><img src="~/Assets/Image/fb.png"></i></a></li>
+                            <li><a href="#" target="_blank"><i><img src="~/Assets/Image/google.png"></i></a></li>
+                            <li><a href="#" target="_blank"><i><img src="~/Assets/Image/anti-sky.png"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+
+    </div>
+    @RenderSection("jsFooter", required: false);
+</body>
+   
+</html >
+

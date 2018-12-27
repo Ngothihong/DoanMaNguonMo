@@ -1,0 +1,20 @@
+﻿
+.blogpost {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+.post-title {
+    margin-top: 3%
+}
+.space30 {
+    margin-bottom: 2% !important
+}
+.article-content {
+    line-height: 20px;
+    font-size: 15px;
+}
+    .article-content p span {
+        font-size: 14px;
+        background-color: aqua;
+        
+    }

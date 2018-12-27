@@ -1,0 +1,46 @@
+﻿@model List<StartCodingNowWebManager.FF.Course>
+@{
+    Layout = null;
+}
+
+<body>
+    @{
+        if (Model != null)
+        {
+            int i = 0;
+
+            <div class="grid-in">
+                @foreach (var item in Model)
+                {
+
+                    if (i < 6)
+                    {
+                        <div class="col-md-4 grid-top" style="margin-top:50px">
+                            <a href="/USER/KhoaHoc/ChiTiet/@item.Idcourse" class="b-link-stripe b-animate-go  thickbox">
+                                <img class="img-responsive" src="@Url.Content(item.Image)" alt="" style="height:300px">
+                                <div class="b-wrapper">
+                                    <h3 class="b-animate b-from-left    b-delay03 ">
+                                        <span>Robot</span>
+                                    </h3>
+                                </div>
+                            </a>
+
+                            <p><a href="/USER/KhoaHoc/ChiTiet/@item.Idcourse">@item.Name</a></p>
+                        </div>
+
+                    }
+                    else { break; }
+                    i++;
+                }
+
+            </div>
+        }
+        else
+        {
+                <h4>Có vấn đề khi kết nối đến KimAnhAPI</h4>
+        }
+
+
+    }
+
+</body>

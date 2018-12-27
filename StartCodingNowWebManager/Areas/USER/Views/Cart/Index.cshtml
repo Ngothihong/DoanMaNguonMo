@@ -1,0 +1,61 @@
+﻿@model List<StartCodingNowWebManager.Areas.USER.Models.Cart_items>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/USER/Views/Shared/_Layout.cshtml";
+}
+@section jsFooter{
+    <script src="~/Assets/USER/js/controller/cartController.js"></script>
+    
+}
+ 
+<div class="container">
+    <div class="check">
+        <h1>Giỏ hàng của bạn ( @Model.Count )</h1>
+        <div class="col-md-9 cart-items">
+
+            @foreach (var item in Model)
+            {
+                //sản phẩm giỏ hàng
+                <div class="cart-header">
+                    <div class="close1" id="btn_delete" data-id=@item.product.Idrobot><img src="~/Assets/Image/close_1.png" /> </div>
+                    <div class="cart-sec simpleCart_shelfItem">
+                        <div class="cart-item cyc">
+                            <img src="@Url.Content(item.product.Image)" class="img-responsive" alt="" />
+                        </div>
+                        <div class="cart-item-info">
+                            <h3><a href="#">@item.product.Name</a><span> Mã sản phẩm : @item.product.Idrobot</span></h3>
+                            <ul class="qty">
+
+                                <li><p>Số lượng :<input min="1" type="number" data-id="@item.product.Idrobot" id="txt_number" value="@item.Quantity" /> </p></li>
+                                <li><p> Giá : @item.product.Price</p></li>
+                            </ul>
+                            <div class="delivery">
+                                <p>Thành Tiền : @(item.product.Price.GetValueOrDefault(0) * item.Quantity) </p>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            }
+
+        </div>
+        @*cột thanh toán*@
+        <div class="col-md-3 cart-total">
+            <button class="btn btn-warning " id="btn_continue">Tiếp tục mua sắm</button>
+            <button class="btn btn-warning " id="btn_update"> Cập Nhật </button>
+
+            <ul class="total_price">
+                <li class="last_price"> <h4>TOTAL</h4></li>
+                <li class="last_price"><span>@Model.Sum(x => x.product.Price)</span></li>
+                <div class="clearfix"> </div>
+            </ul>
+
+            <div class="clearfix"></div>
+            <a class="order" href="/USER/Cart/ThanhToan"><p style="font:bold 40px"> Đặt Hàng</p></a>
+        </div>
+        <div class="clearfix"> </div>
+
+    </div>
+</div>

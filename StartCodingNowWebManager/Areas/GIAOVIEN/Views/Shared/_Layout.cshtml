@@ -1,0 +1,74 @@
+﻿@using StartCodingNowWebManager.Common;
+@using StartCodingNowWebManager.Helpers;
+@using Microsoft.AspNetCore.Http;
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>STARTCODINGNOW SÀI GÒN</title>
+    <link href="~/Assets/GIAOVIEN/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Assets/GIAOVIEN/js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <!--theme-style-->
+    <link href="~/Assets/GIAOVIEN/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="New Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'><!--//fonts-->
+    <!-- start menu -->
+    <link href="~/Assets/GIAOVIEN/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Assets/GIAOVIEN/css/gv.css" rel="stylesheet" type="text/css" media="all" />
+    @*<link href="~/Assets/USER/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />*@
+    <script type="text/javascript" src="~/Assets/USER/js/memenu.js"></script>
+    <script>$(document).ready(function () { $(".memenu").memenu(); });</script>
+    <script src="~/Assets/GIAOVIEN/js/simpleCart.min.js"></script>
+    <script type="text/javascript" src="~/Assets/GIAOVIEN/js/slideshow_banner.js"></script>
+    <script type="text/javascript" src="~/Assets/GIAOVIEN/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+</head>
+<body>
+    <div class="header" style="   background-color: black;    ;height: 120px">
+        <div class="container">
+            <div class="head-top">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="~/Assets/Image/logogiaovien.png" />
+                    </a>
+                </div>
+                <div class=" h_menu4">
+                    <ul class="memenu skyblue">
+                        <li> <a class="color1" style="" href="@Url.Action("Index","lophoc")"><h3 style="color: WHITE;"> Lớp Học</h3></a></li>
+                        <li class="grid"><a class="color2" href="@Url.Action("Index","Diemdanh")"><h3 style="color: WHITE;">Điểm Danh</h3> </a></li>
+                        <li><a class="color4" href="@Url.Action("Index","Chamcong")"><h3 style="color: WHITE;"> Chấm Công</h3></a></li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #45c6e4;">
+                                <img src="~/Assets/Image/user.png" width="20px" height="18px" />Hello! @Context.Session.GetString(@CommonConstant.USER_SESSION) <b class="caret"> </b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li> <a href="@Url.Action("Index","thongtin")"><img src="~/Assets/Image/user.png" width="10px" height="10px" /> Thông tin cá nhân</a> </li>
+                                <li> <a href="@Url.Action("Index","matkhau")"><img src="~/Assets/Image/settings.png" width="15px" height="13px" /> Đổi Mật Khẩu</a> </li>
+                                <li class="divider"> </li>
+                                <li> <a href="@Url.Action("Logout","Login")"><img src="~/Assets/Image/logout.png" width="15px" height="13px" /> Đăng Xuất</a> </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    @RenderBody()
+    <div style="width:100% ; height:20px; background-color: black ; margin-top:20px"></div>
+</body>
+</html>

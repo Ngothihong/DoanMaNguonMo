@@ -1,0 +1,67 @@
+﻿@model StartCodingNowWebManager.FF.Class
+
+@{
+    ViewBag.Title = "Sua";
+    Layout = "~/Areas/ADMIN/Views/Shared/_LayoutADD.cshtml";
+}
+
+@using (Html.BeginForm("Sua", "Class", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>SỬA LỚP</h4>
+    <hr />
+    @Html.HiddenFor(model => model.Idclass)
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.Display("Tên Lớp",  new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.NameClass, new { htmlAttributes = new { @class = "form-control" }, @style = "height:30px" , @required = "" })
+            @Html.ValidationMessageFor(model => model.Idcourse, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Display("Tên Khóa học",  new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Idcourse, null, "Chọn Khóa Học", new { @style = "height:30px; width:170px" , @required = "" })
+            @Html.ValidationMessageFor(model => model.NameClass, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Display("Ngày Bắt Đầu",   new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.StartDay, new { htmlAttributes = new { @class = "form-control", @type = "Date", @style = "width:170px" }, @required = "" })
+            @Html.ValidationMessageFor(model => model.StartDay, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Display("Ngày Kết Thúc",   new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FinishDay, new { htmlAttributes = new { @class = "form-control", @type = "Date", @style = "width:170px" }, @required = "" })
+            @Html.ValidationMessageFor(model => model.FinishDay, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Display("Tình Trạng",   new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.State, new { htmlAttributes = new { @class = "form-control" }, @style = "height:30px", @required = "" })
+            @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Lưu" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Quay Lại", "Index")
+</div>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable< StartCodingNowWebManager.ApiCommunicationModels.HongHeoAPI.ArticleModel>
+
+
+    @foreach (var item in Model)
+    {
+        <tbody>
+
+
+            <tr>
+                
+                <td style="text-align:center">
+                @item.IdArticle
+                </td>
+                <td class="column1" style="text-align:center">@item.Title</td>
+
+                <td class="column2" style="text-align:center">@item.Day</td>
+                <td class="column2" style="text-align:center">@item.Idadmin</td>
+                <td class="column3" style="text-align:center">
+                    
+                    <a href="@Url.Action("EditAr", "TinTuc", new { id = item.IdArticle })">Sửa</a>
+                    @using (Html.BeginForm("DeleteAr", "TinTuc", FormMethod.Post))
+                    {
+                        <a href="@Url.Action("DeleteAr", "TinTuc", new { id = item.IdArticle })">Delete</a>
+                    }
+                </td>
+
+            </tr>
+
+        </tbody>
+    }
+
+    
+   

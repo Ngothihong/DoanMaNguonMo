@@ -1,0 +1,99 @@
+﻿
+@model Sakura.AspNetCore.IPagedList<StartCodingNowWebManager.ApiCommunicationModels.HongHeoAPI.ArticleModel>
+
+@using Sakura.AspNetCore;
+
+@{
+    ViewBag.Title = "InNewscate";
+    Layout = "~/Areas/USER/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CLato:300,400" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="~/Assets/Article/magnews/css/bootstrap.min.css" />
+    <!-- Owl Carousel -->
+    <link type="text/css" rel="stylesheet" href="~/Assets/Article/magnews/css/owl.carousel.css" />
+    <link type="text/css" rel="stylesheet" href="~/Assets/Article/magnews/css/owl.theme.default.css" />
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="~/Assets/Article/magnews/css/font-awesome.min.css">
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="~/Assets/Article/magnews/css/style.css" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="container">
+        <div class="row" style="width:100%">
+            <div class="col-md-12">
+               
+               @* @await Html.PartialAsync("~/Areas/USER/Views/TinTuc/Menu.cshtml")*@
+                @Html.RenderAction("Menu", "TinTuc")
+                @{ int i = 0;
+
+                    <div class="row" style="margin-top:20px">
+                        <!-- Column 1 -->
+                        <div class="col-md-8">
+                            @foreach (var item in Model)
+                            {
+                                if (i < 4)
+                                {
+                                    <div class="col-md-11 col-sm-6">
+                                        <!-- ARTICLE -->
+                                        <article class="article widget-article">
+                                            <div class="article-img" style="width:300px">
+                                                <a href="/User/TinTuc/Detail/@item.IdArticle">
+                                                    <img src="~/Assets/Image/IMGAR/@item.Image" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="article-body">
+                                                <h2 class="article-title" style="font-size:20px"><a href="/User/TinTuc/Detail/@item.IdArticle">@item.Title</a></h2>
+                                                <ul class="article-meta">
+                                                    <li><i class="fa fa-clock-o" style="color:#000000;font-size:15px"> @item.Day </i></li>
+                                                    <li><i></i> <p style="color:#000000;margin-top:10px;font-size:15px">&#9679  @item.Summary</p></li>
+                                                </ul>
+                                            </div>
+                                        </article>
+                                    </div>
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                                i++;
+                            }
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-md-8"> </div>
+                        </div>
+                    </div>
+                }
+                <div class="widget social-widget">
+
+                    <div class="col-md-10">
+                        @*<img  border="0" id="cpm37772" src="//adi.admicro.vn/adt/adn/2018/12/ldn-3-adx5c10f48fc8117.jpg" width="300" height="600">*@
+                        <iframe position: absolute; top: -1000px; right: 0%; src="https://adi.admicro.vn/adt/banners/nam2015/4043/min_html5/lanphamthi/2018_11_05/300x600_honda/300x600_honda/300x600_honda.html?url=%2F%2Flg1.logging.admicro.vn%2Fadn%3Fdmn%3Dhttp%253A%252F%252Fgenk.vn%252Fkhoa-hoc.htm%26lsn%3D1544810566584%26ce%3D1%26lc%3D5%26cr%3D1544491630%26ui%3D1344916301953337058%26ii%3D1876576645%26bi%3D0%26cmpg%3D34173%26items%3D123031%26zid%3D23399%26cid%3D-1%26tp%3D11%26tpn%3D4%26cov%3D1%26pr%3D12365726356%26adc_cpa%3D1%26re%3Dhttps%253A%252F%252Fhondaxemay.com.vn%252Ftin-tuc%252Fhonda-viet-nam-thuc-hien-chuong-trinh-khuyen-mai-luot-lead-em-nhan-them-bao-hiem%252F%253Futm_source%253DADX%2526utm_medium%253Dbanner%2526utm_campaign%253DHONDA_LEAD_2018&amp;admid=adnzone_23399_0_123031" width="300" height="600" frameborder="0" scrolling="no" style="position: absolute;top: -1000px;right: -20%;"></iframe>
+
+                    </div>
+                </div>
+                <pager source="@Model" />
+                @*<div class="row">
+            <div class="article-pagination" style="text-align:center">
+                <ul>
+                    @Html.PagedListPager(Model, Page => Url.Action("InNewscate", new { Page, cateid = ViewBag.cateid }))
+                </ul>
+            </div>
+        </div>*@
+            </div>
+        </div>
+    </div>
+
+
+</body>

@@ -1,0 +1,83 @@
+﻿@model List<StartCodingNowWebManager.ApiCommunicationModels.HongHeoAPI.ArticleModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Assets/Article/table/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Assets/Article/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Assets/Article/table/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Assets/Article/table/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Assets/Article/table/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Assets/Article/table/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Assets/Article/table/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+    <div class="limiter" >
+        <div class="container-table100" >
+            <div class="wrap-table100" >
+                <div class="table100" >
+                    <table >
+                        <thead>
+                            <tr class="table100-head">
+                                <th  style="text-align:center;width:10%">STT</th>
+                                <th class="column1" style="text-align:center">Title</th>
+
+                                <th class="column2" style="text-align:center">Date</th>
+                                <th class="column2" style="text-align:center">Admin</th>
+                                <th class="column3" style="text-align:center">Action</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+
+
+                            @*<td style="text-align:center">@item.ID_Article</td>
+        <td class="column1" style="text-align:center">@item.Title</td>
+
+        <td class="column2" style="text-align:center">@item.Day</td>
+        <td class="column2" style="text-align:center">@item.IDAdmin</td>
+        <td class="column3" style="text-align:center"><a href="@Url.Action("ShowAr","TinTuc",new { id = item.ID_Article})">Chi Tiết</a></td>*@
+                            @Html.RenderAction("PartialListAr", "TinTuc")
+
+                           @* @await Html.PartialAsync("~/Areas/USER/Views/TinTuc/PartialListAr.cshtml")*@
+                        </tbody>
+                        
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+
+</body>
+</html>

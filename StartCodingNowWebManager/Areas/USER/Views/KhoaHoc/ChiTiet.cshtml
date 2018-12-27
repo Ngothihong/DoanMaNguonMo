@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/USER/Views/Shared/_Layout.cshtml";
+}
+
+<div class="product">
+    <div class="container">
+       
+        @await Html.PartialAsync("~/Areas/USER/Views/Shared/_LeftMenu.cshtml")
+        <div class="col-md-9 product-price1">
+            <div class="col-md-5 single-top">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li data-thumb="@Url.Content(Model.Image)">
+                            <img src="@Url.Content(Model.Image)" />
+                        </li>
+                    </ul>
+                </div>
+                <!-- FlexSlider -->
+                <script defer src="~/Assets/USER/js/jquery.flexslider.js"></script>
+                <link rel="stylesheet" href="~/Assets/USER/css/flexslider.css" type="text/css" media="screen" />
+                <script>
+                    // Can also be used with $(document).ready()
+                    $(window).load(function () {
+                        $('.flexslider').flexslider({
+                            animation: "slide",
+                            controlNav: "thumbnails"
+                        });
+                    });
+                </script>
+            </div>
+            <div class="col-md-7 single-top-in simpleCart_shelfItem">
+                <div class="single-para ">
+                    <h4>@Model.Name</h4>
+                    <div class="star-on">
+                        <ul class="star-footer">
+                            <li><a href="#"><i> </i></a></li>
+                            <li><a href="#"><i> </i></a></li>
+                            <li><a href="#"><i> </i></a></li>
+                            <li><a href="#"><i> </i></a></li>
+                            <li><a href="#"><i> </i></a></li>
+                        </ul>
+                        @*<div class="review">
+                            <a href="#"> 1 customer review </a>
+
+                        </div>*@
+                        <div class="clearfix"> </div>
+                    </div>
+                    <h5 class="item_price">Giá:&nbsp; @Model.Fee</h5>
+                    <p>
+                        Nội dung:&nbsp;@Model.Contents
+                    </p>
+                    <ul class="tag-men">
+                        <li>
+                            <span>Tuổi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span class="women1">: @Model.Age</span>
+                        </li>
+                        <li>
+                            <span>Học viên&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span class="women1 " style="width:10%">: @Model.Maxnumber</span>
+                        </li>
+                        <li>
+                            <span>Thời Lượng</span>
+                            <span class="women1">: @Model.Time</span>
+                        </li>
+                    </ul>
+                    <div class="add-cart item_add">
+                        <a href="/USER/KhoaHoc/Register/?Id=@Model.Idcourse&&Name=@Model.Name" class="add-cart item_add">Đăng kí</a>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+            <!---->
+            <div class="cd-tabs">
+
+
+            </div>
+        </div>
+    </div>
+</div>

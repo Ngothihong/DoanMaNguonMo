@@ -1,0 +1,142 @@
+﻿<div class="col-md-3 product-price">
+
+    <div class=" rsidebar span_1_of_left">
+        <div class="search" style="width:auto; border-style:solid; margin-bottom:10%">
+            @using (Html.BeginForm("Index", "KhoaHoc", FormMethod.Get))
+            {
+                <input type="text" , name="searchString" value="Nhập từ khóa cần tìm " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Nhập từ khóa cần tìm';}">
+                <input type="submit" value="Tìm">
+            }
+
+        </div>
+        <div class="clearfix"> </div>
+
+        <div class="of-left">
+            <h3 class="cate">Tuổi</h3>
+        </div>
+        <ul class="menu">
+
+
+            <li class="item3">
+                <a href="#">5-18</a>
+                <ul class="cute">
+                    <li class="subitem1">@Html.ActionLink("5 - 10 tuổi", "Index", new { AgeSort = "5-10" })</li>
+                    <li class="subitem2">@Html.ActionLink("10 - 18 tuổi", "Index", new { AgeSort = "10-18" })</li>
+                </ul>
+            </li>
+            <li class="item1">
+                <a href="#">Trên 18 </a>
+                <ul class="cute">
+                    <li class="subitem1">@Html.ActionLink("18 - 20 tuổi", "Index", new { AgeSort = "18-20" })</li>
+                    <li class="subitem2">@Html.ActionLink("20 - 25 tuổi", "Index", new { AgeSort = "20-25" })</li>
+                    <li class="subitem3">@Html.ActionLink("Từ 25 tuổi trở lên", "Index", new { AgeSort = "25" })</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!--initiate accordion-->
+    <script type="text/javascript">
+        $(function () {
+            var menu_ul = $('.menu > li > ul'),
+                menu_a = $('.menu > li > a');
+            menu_ul.hide();
+            menu_a.click(function (e) {
+                e.preventDefault();
+                if (!$(this).hasClass('active')) {
+                    menu_a.removeClass('active');
+                    menu_ul.filter(':visible').slideUp('normal');
+                    $(this).addClass('active').next().stop(true, true).slideDown('normal');
+                } else {
+                    $(this).removeClass('active');
+                    $(this).next().stop(true, true).slideUp('normal');
+                }
+            });
+
+        });
+    </script>
+    <!---->
+    <!--<div class="product-middle">
+
+        <div class="fit-top">
+            <h6 class="shop-top">Lorem Ipsum</h6>
+            <a href="single.html" class="shop-now">SHOP NOW</a>
+            <div class="clearfix"> </div>
+        </div>
+    </div>-->
+    <div class="sellers">
+        <div class="of-left-in">
+            <h3 class="cate">Giá khóa học</h3>
+        </div>
+
+        <ul class="menu">
+            <li class="item1">
+                <a href="#">0đ - Dưới 1.000.000đ</a>
+                <ul class="cute">
+                    <li class="subitem1">@Html.ActionLink("0đ - Dưới 200.000đ", "Index", new { PriceSort = "0-200000" })</li>
+                    <li class="subitem2">@Html.ActionLink("200.000đ - Dưới 500.000đ", "Index", new { PriceSort = "200000-500000" })</li>
+                    <li class="subitem3">@Html.ActionLink("500.000đ - Dưới 1.000.000đ", "Index", new { PriceSort = "500000-1000000" })</li>
+                </ul>
+            </li>
+            <li class="item3">
+                <a href="#">Trên 1.000.000đ</a>
+                <ul class="cute">
+                    <li class="subitem1">@Html.ActionLink("1.000.000đ - Dưới 2.000.000đ", "Index", new { PriceSort = "1000000-2000000" })</li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+    <!---->
+    <div class="product-bottom">
+        <div class="of-left-in">
+            <h3 class="best">Best Sellers</h3>
+        </div>
+        <div class="product-go">
+            <div class=" fashion-grid">
+                <a href="single.html"><img class="img-responsive " src="/Assets/Image/p1.jpg" alt=""></a>
+
+            </div>
+            <div class=" fashion-grid1">
+                <h6 class="best2">
+                    <a href="single.html">
+                        Lorem ipsum dolor sit
+                        amet consectetuer
+                    </a>
+                </h6>
+
+                <span class=" price-in1"> $40.00</span>
+            </div>
+
+            <div class="clearfix"> </div>
+        </div>
+        <div class="product-go">
+            <div class=" fashion-grid">
+                <a href="single.html"><img class="img-responsive " src="/Assets/Image/p2.jpg" alt=""></a>
+
+            </div>
+            <div class="fashion-grid1">
+                <h6 class="best2">
+                    <a href="single.html">
+                        Lorem ipsum dolor sit
+                        amet consectetuer
+                    </a>
+                </h6>
+
+                <span class=" price-in1"> $40.00</span>
+            </div>
+
+            <div class="clearfix"> </div>
+        </div>
+
+    </div>
+    <div class=" per1">
+        <a href="single.html">
+            <img class="img-responsive" src="/Assets/Image/pro.jpg" alt="">
+            <div class="six1">
+                <h4>DISCOUNT</h4>
+                <p>Up to</p>
+                <span>60%</span>
+            </div>
+        </a>
+    </div>
+</div>

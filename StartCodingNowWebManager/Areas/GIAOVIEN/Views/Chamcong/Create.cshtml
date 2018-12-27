@@ -1,0 +1,38 @@
+﻿@model StartCodingNowWebManager.FF.TeachingClass
+@{
+    Layout = null;
+}
+@using (Html.BeginForm("ADDchamcong", "Chamcong", FormMethod.Post))
+{
+    if (ViewBag.isOk == 1)
+    {
+        <div style="float:left">
+            <div class="search_khoahoc" style="padding-top:20px; padding-left:100px">
+
+                <div style="float:left;margin-left:10px">
+                    <h4 style="float:left; font-family:'Times New Roman'; margin-top:8px">Lớp học</h4>
+                    @Html.DropDownListFor(Model => Model.Idclass, (SelectList)ViewBag.IDClass, new { @id = "txtName", @type = "text", @style = "width:150px; height:30px ; border:groove;  margin-left:20px" })
+                    @*<input type="text" style="width:150px; height:30px ; border:groove;  margin-left:20px" />*@
+                </div>
+                <div style="float:left; ">
+                    <h4 style="float:left; font-family:'Times New Roman'; margin-top:8px;margin-left: 20px;">Buổi học</h4>
+                    @Html.DropDownListFor(Model => Model.Session, (SelectList)ViewBag.session, new { @type = "text", @style = "width:150px; height:30px ; border:groove;  margin-left:20px" })
+                    @*<input type="text" style="width:150px; height:30px ; border:groove;  margin-left:20px" />*@
+                </div>
+                <div style="float: left; padding-left: 20px;">
+                    <h4 style="float:left; font-family:'Times New Roman'; margin-top:8px">Ngày</h4>
+                    @Html.EditorFor(m => m.Day, new { htmlAttributes = new { @type = "date", @style = "width:200px; height:30px ; border:groove;  margin-left:20px" } })
+                    @*<input type="date" style="width:150px; height:30px ; border:groove;  margin-left:20px" />*@
+                </div>
+                <div style="float:right; align-self:center;  ">
+                    <button type="submit" style="margin-left:60px">Thêm</button>
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+
+
+}

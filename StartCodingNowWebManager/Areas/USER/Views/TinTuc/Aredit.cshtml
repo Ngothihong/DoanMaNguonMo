@@ -1,0 +1,67 @@
+﻿@model StartCodingNowWebManager.ApiCommunicationModels.HongHeoAPI.ArticleModel
+@{
+    ViewBag.Title = "Aredit";
+    Layout = "~/Areas/USER/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Aredit", "TinTuc", FormMethod.Post))
+{
+<table class="table table-hover">
+    <tbody>
+        <tr>
+            <td>
+                <label>ID_Article</label>
+                @Html.TextBoxFor(x => x.IdArticle, new { @Readonly = "" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label>ID_Title</label>
+                @Html.TextBoxFor(x => x.Title, new { Styles = "col-md-10" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Summary</label>
+                @Html.TextBoxFor(x => x.Summary)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Contents</label>
+                @Html.TextBoxFor(x => x.Contents)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Image :</label>
+                @Html.TextBoxFor(x => x.Image)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>StartDay</label>
+                @Html.TextBoxFor(x => x.Day)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>State</label>
+                @Html.TextBoxFor(x => x.State)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>ID_Admin</label>
+                @Html.TextBoxFor(x => x.Idadmin)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Update " />
+            </td>
+        </tr>
+    </tbody>
+</table>
+}

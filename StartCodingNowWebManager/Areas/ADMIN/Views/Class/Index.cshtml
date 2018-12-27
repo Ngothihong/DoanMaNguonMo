@@ -1,0 +1,71 @@
+﻿
+@model Sakura.AspNetCore.IPagedList<StartCodingNowWebManager.Areas.GIAOVIEN.Models.Class_model>
+
+@using Sakura.AspNetCore;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ADMIN/Views/Shared/_LayoutADD.cshtml";
+}
+<div class="content_table">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> <a href="@Url.Action("Index","Class")">QUẢN LÝ LỚP HỌC</a> </h3>
+                    @using (Html.BeginForm("Index", "Class", FormMethod.Get))
+                    {
+                        <div class="row">
+                            <div class="col-lg-6" style="right:-13%">
+                                <div class="col-md-4">
+                                    <input style="color:gray" type="text" name="Search" placeholder="Nhập từ khóa cần tìm" />
+                                </div>
+                                <div class="col-md-4">
+                                    <input style="color:black" type="submit" value="Tìm" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div>
+                    <a href="@Url.Action("Them", "Class")"> <button style="top:2.2%"> Thêm Lớp </button> </a>
+                </div>
+                <div class="panel-body">
+
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>Tên Lớp</th>
+                                <th>Khóa Học</th>
+                                <th>Ngày Bắt Đầu</th>
+                                <th>Ngày Kết thúc</th>
+                                <th>Số Lượng</th>
+                                <th>Tình Trạng</th>
+                                <th colspan="2"></th>
+                            </tr>
+                        </thead>
+                        @Html.Raw(TempData["msg"])
+                        @foreach (var item in Model)
+                        {
+                            <tbody>
+                                <tr>
+                                    <td>@item.NameClass</td>
+                                    <td>@item.NameCourse</td>
+                                    <td>@item.StartDay.Value.ToShortDateString()</td>
+                                    <td>@item.FinishDay.Value.ToShortDateString()</td>
+                                    <td>@item.Number</td>
+                                    <td>@item.State</td>
+                                    <td> <a href="@Url.Action("Sua", "Class", new { @id = item.IDClass})"> Sửa </a></td>
+                                    <td>
+                                        <a href="@Url.Action("Xoa", "Class", new { @id = item.IDClass})"> Xóa </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        }
+                    </table>
+                    <pager source="@Model" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

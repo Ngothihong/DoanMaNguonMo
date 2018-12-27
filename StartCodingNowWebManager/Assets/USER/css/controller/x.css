@@ -1,0 +1,47 @@
+﻿a.xem_ct {
+    text-decoration: none;
+    background: #EF5F21;
+    padding: 10px 20px;
+    font-family: Tahoma, sans-serif;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    font-weight: 800;
+    text-align: center;
+}
+
+a.xem_ct:hover{
+    background-color:black
+}
+.tt_huy {
+    margin-top: 10px;
+    height: 40px;
+    background-color :gainsboro;
+    text-align: center;
+    font-size: x-large
+}
+
+.tt {
+    margin-top:10px;
+    height: 40px;
+    background-color: cadetblue;
+    text-align: center;
+    font-size: x-large
+}
+p.cnt{
+    font-size:x-large
+}
+ul.view_ct li {
+    font-size:medium
+}
+
+.delivery1 {
+    margin-top: 3em;
+}
+
+.delivery1 p {
+        color:blue;
+        font-size: medium;
+        font-weight: 800;
+        float: left;
+    }

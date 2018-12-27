@@ -1,0 +1,42 @@
+﻿@model IEnumerable<StartCodingNowWebManager.Areas.GIAOVIEN.Models.Luong_model>
+@{
+    Layout = null;
+}
+<div style="margin-bottom: 20px;
+    float: left;
+    padding-left: 30px;">
+    <div style="" >
+        @using (Html.BeginForm("Search", "Chamcong", FormMethod.Post))
+        {
+            <div style="float:left;margin-bottom: 20px; ">
+                <h4 style="float:left; font-family:'Times New Roman'; margin-top:8px">Tháng</h4>
+                @Html.DropDownList("month", null, new { @type = "text", @style = "width:200px; height:30px ; border:groove;  margin-left:20px" })
+                @*<input type="text" style="width:200px; height:30px ; border:groove;  margin-left:20px" />*@
+            </div>
+            <div style="float:left; align-self:center;  ">
+                <button type="submit" style="margin-left:60px">Tìm kiếm</button>
+            </div>
+        }
+    </div>
+    <table align="center" border="1" style="width:90% ; float:left ; margin-left:30px">
+        <tr class="table_th" style="background-color:orange">
+            <th class="th" style="background-color:orange">Năm</th>
+            <th class="th" style="background-color:orange">Tháng</th>
+            <th class="th" style="background-color:orange">Tổng số buổi</th>
+            <th class="th" style="background-color:orange">Lương</th>
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr class="table_th" style="">
+                <td class="td">@item.year</td>
+                <td class="td">@item.month</td>
+                <td class="td">@item.numbersessiong</td>
+                <td class="td">@item.monye</td>
+
+            </tr>
+        }
+
+
+    </table>
+</div>

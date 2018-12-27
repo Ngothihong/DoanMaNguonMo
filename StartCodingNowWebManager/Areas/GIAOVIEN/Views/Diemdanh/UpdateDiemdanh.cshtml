@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("Update", "Diemdanh", FormMethod.Post))
+{
+    <div style="float:left ;     padding-bottom: 20px;">
+        <div class="search_khoahoc" style="padding-top:20px;padding-left:20px;">
+           
+            <div style="float:left;margin-left:10px">
+                <h4 style="float:left; font-family:'Times New Roman'; margin-top:8px">Lớp học</h4>
+                @Html.DropDownList("Idclass",(SelectList)ViewBag.IDClass, new { @type = "text", @style = "width:150px; height:30px ; border:groove;  margin-left:20px" })
+                @*<input type="text" style="width:150px; height:30px ; border:groove;  margin-left:20px" />*@
+
+            </div>
+            <div style="float:left;margin-left:10px">
+                <h4 style="float:left; font-family:'Times New Roman'; margin-top:8px">Học viên</h4>
+                @Html.DropDownList("Idstudent", (SelectList)ViewBag.IDStudent, new { @type = "text", @style = "width:200px; height:30px ; border:groove;  margin-left:20px" })
+               
+
+            </div>
+            <div style="float:left; ">
+                <h4 style="float:left; font-family:'Times New Roman'; margin-top:8px;margin-left: 20px;">Buổi học</h4>
+                @Html.DropDownList("Session", (SelectList)ViewBag.Session,  new { @type = "text", @style = "width:100px; height:30px ; border:groove;  margin-left:20px" })
+                @*<input type="text" style="width:150px; height:30px ; border:groove;  margin-left:20px" />*@
+            </div>
+            <div style="float: left; padding-left: 20px;">
+                <h4 style="float:left; font-family:'Times New Roman'; margin-top:8px">Trạng Thái</h4>
+                @Html.DropDownList("State", (SelectList)ViewBag.State,  new { @type = "text", @style = "width:150px; height:30px ; border:groove;  margin-left:20px" })
+                @*@Html.EditorFor(Model => Model.State, new { htmlAttributes = new { @type = "Text", @style = "width:200px; height:30px ; border:groove;  margin-left:20px" } })*@
+                @*<input type="datetime" style="width:150px; height:30px ; border:groove;  margin-left:20px" value="@Model.Day.Date"/>*@
+
+            </div>
+            <div style="float:right; align-self:center;  ">
+                <button type="submit" style="margin-left:70px">Cập nhập</button>
+            </div>
+        </div>
+
+    </div>
+}

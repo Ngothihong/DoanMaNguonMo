@@ -1,0 +1,24 @@
+﻿@model List<StartCodingNowWebManager.ApiCommunicationModels.HongHeoAPI.MenuArticleModel>
+@{
+    Layout = null;
+}
+
+@{
+    int i = 0;
+<div class="section-title">
+    @*<h2 class="title">Trending Posts</h2>*@
+    <!-- tab nav -->
+   <h2>Menu</h2>
+    <ul class="tab-nav " style="margin-left: 15px">
+        <li class="active"><a data-toggle="tab" href="#tab1">Tất Cả</a></li>
+        @foreach (var item in Model)
+        {
+            {
+                <li> @Html.ActionLink(item.NameMenu, "InNewscate", new { @cateid = item.IdMenu }) </li>
+            }
+
+
+        }
+    </ul>
+</div>
+}

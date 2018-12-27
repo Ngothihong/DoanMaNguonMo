@@ -1,0 +1,111 @@
+﻿
+@model Sakura.AspNetCore.IPagedList<StartCodingNowWebManager.Areas.GIAOVIEN.Models.Class_model>
+
+@using Sakura.AspNetCore;
+@{
+    ViewBag.Title = "ChonLop";
+    Layout = "~/Areas/ADMIN/Views/Shared/_LayoutADD.cshtml";
+}
+@*<label>@ViewBag.IDStudent</label>*@
+<div class="content_table">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> CHỌN LỚP HỌC </h3>
+                    @using (Html.BeginForm("Index", "Class", FormMethod.Get))
+                    {
+                        <div class="row">
+                            <div class="col-lg-6" style="right:-13%">
+                                <div class="col-md-4">
+                                    <input style="color:gray" type="text" name="Search" value="Nhập từ khóa cần tìm" />
+                                </div>
+                                <div class="col-md-4">
+                                    <input style="color:black" type="submit" value="Tìm" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="panel-body">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Tên Lớp</th>
+                                <th>Khóa Học</th>
+                                <th>Ngày Bắt Đầu</th>
+                                <th>Ngày Kết thúc</th>
+                                <th>Số Lượng</th>
+                                <th>Tình Trạng</th>
+                            </tr>
+                        </thead>
+                        @Html.Raw(TempData["msg"])
+                        @foreach (var item in Model)
+                        {
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" value="@item.IDClass" name="location" /></td>
+                                    <td>@item.NameClass</td>
+                                    <td>@item.NameCourse</td>
+                                    <td>@item.StartDay</td>
+                                    <td>@item.FinishDay</td>
+                                    <td>@item.Number</td>
+                                    <td>@item.State</td>
+                                </tr>
+                            </tbody>
+
+                        }
+                    </table>
+                    <pager source="@Model" /> </div>
+                <div>
+                    @*<a> <button id="btthem"> Thêm Lớp </button> </a>*@ <input type="button" value="LƯU" id="btthem" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script language="javascript">
+
+
+
+    $('#btthem').on('click', function () {
+        alert(@ViewBag.IDStudent);
+       // var id_st = sURLVariables[sURLVariables.length-3];
+        var checkboxes = document.getElementsByName('location');
+        var vals = "";
+        var x = 0;
+        var a = new Array();
+
+        for (var i = 0, n = checkboxes.length; i < n; i++) {
+
+            if (checkboxes[i].checked) {
+                x++;
+                a[x] = checkboxes[i].value;
+                alert(a[i]);
+
+            }
+        }
+        var id_st = @ViewBag.IDStudent;
+
+
+
+        $.ajax({
+            url: "Student/ThemN",
+            type: 'Post',
+            data: { a: a, id_student: id_st },
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+
+            },
+            error: function (xhr) {
+                console.log(xhr);
+                alert("Error has occurred..");
+            }
+        });
+
+    })
+
+</script>

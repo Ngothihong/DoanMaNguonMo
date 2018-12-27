@@ -1,0 +1,87 @@
+﻿
+@model Sakura.AspNetCore.IPagedList< StartCodingNowWebManager.FF.Teacher>
+
+@using Sakura.AspNetCore;
+@{
+    ViewBag.Title = "GiaoVien";
+    Layout = "~/Areas/ADMIN/Views/Shared/_LayoutADD.cshtml";
+}
+<div class="content_table">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> <a href="@Url.Action("GiaoVien","GiaoVien")">QUẢN LÝ GIÁO VIÊN</a> </h3>
+                    @using (Html.BeginForm("GiaoVien", "GiaoVien", FormMethod.Get))
+                    {
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-md-4">
+                                    <input style="color:gray" type="text" name="Search" placeholder="Nhập từ khóa cần tìm" />
+                                </div>
+                                <div class="col-md-4">
+                                    <input style="color:black" type="submit" value="Tìm" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div>
+                    <a href="@Url.Action("Them", "GiaoVien")" id="them011"> <button> Thêm Giáo Viên </button> </a>
+                </div>
+                <div class="panel-body">
+
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>Tên Giáo Viên</th>
+                                <th>Giới Tính</th>
+                                <th>Số Điện Thoại</th>
+                                <th>Địa Chỉ</th>
+                                <th>Email</th>
+                                <th>Trình Độ</th>
+                                <th colspan="2"></th>
+                            </tr>
+                        </thead>
+                        @Html.Raw(TempData["msg"])
+                        @foreach (var item in Model)
+                        {
+                            <tbody>
+                                <tr id="row_@item.Idteacher">
+                                    <td>@item.Name</td>
+                                    <td>@item.Sex</td>
+                                    <td>@item.Phone</td>
+                                    <td>@item.Address</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Knowledge</td>
+                                    <td> <a href="@Url.Action("sua", "GiaoVien", new { @id = item.Idteacher})"> Sửa </a></td>
+                                    <td>
+                                        <a asp-action="Delete" asp-controller="GiaoVien" asp-route-area="ADMIN"
+                                           asp-route-id="item.Idteacher"
+                                           data-ajax="true" data-ajax-method="Delete"  
+                                           data-ajax-complete="$('#row _' + @item.Idteacher).remove()"
+                                           data-ajax-update="#testid"
+                                           class="glyphicon
+   glyphicon-pencil btn-sm">Xóa</a>
+                                        @*@Ajax.ActionLink("Xóa", "Delete","GiaoVien",new { @id = item.Idteacher }, new AjaxOptions
+                                   {
+                                       //Confirm = "Bạn có Chắc Xóa ?",
+                                       UpdateTargetId = "testid",
+
+                                       OnComplete = "$('#row _" + @item.Idteacher + "').remove()",
+
+
+                                       HttpMethod = "Delete"
+                                   })*@
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        }
+                    </table>
+                    <pager source="@Model" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

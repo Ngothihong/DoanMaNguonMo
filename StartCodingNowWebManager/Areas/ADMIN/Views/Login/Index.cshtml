@@ -1,0 +1,51 @@
+﻿@model StartCodingNowWebManager.ApiCommunicationModels.HongHeoAPI.AdminArticleModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Assets/Admin/css/Login_admin.css" rel="stylesheet" />
+</head>
+<body>
+    
+        <div style=" width:400px; height:400px ;
+        margin-top: 100px;
+    margin-left: 500px; border:ridge">
+            <div style="padding-top:30px">
+                <img src="~/Assets/Image/logo.png" style=" padding-left:90px ;" />
+            </div>
+            <div>
+                <h2 style=" padding-left:80px; align-self:center">Welcome&nbsp;back&nbsp;Admin! </h2>
+            </div>
+            <div>
+                @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(false, "", "error")
+                    //  <form style="padding-top:30px">
+                    <div>
+                        <label class="label" for="account-form_email">Users</label>
+                        @Html.TextBoxFor(Model => Model.Idadmin, new { @class = "input", @type = "Text", @autofocus = "autofocus", @id = "account-form_email", @name = "j_username", @placeholder = "Nhập user name", @required = "" })
+
+                        <label></label>
+                    </div>
+                    <div style=" padding-top:30px">
+                        <label style="padding-left:50px" class="" for="account-form_password">Password</label>
+                        @Html.TextBoxFor(Model => Model.Pass, new { @class = "input", @type = "password", @autocomplete = "password", @id = "account-form_password", @name = "j_password", @placeholder = "Nhập Password", @required = "" })
+                    </div>
+                    <div style="padding-left:150px ; padding-top:30px;">
+                        <input style="width:100px; height:30px;background-color:#00ffff ; font-family:Tahoma" type="submit" data-test-id="www-leadgen-submit" value="Log In">
+                    </div>
+                }
+            </div>
+        </div>
+
+    
+
+    </body>
+</html>

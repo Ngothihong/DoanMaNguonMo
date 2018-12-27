@@ -1,0 +1,51 @@
+﻿@model StartCodingNowWebManager.ApiCommunicationModels.HongHeoAPI.ArticleModel
+@{
+    ViewBag.Title = "Showar";
+    Layout = "~/Areas/USER/Views/Shared/_Layout.cshtml";
+}
+
+<h4 align="left" style="color:blue; padding-top:30px">
+    <b>
+        <a href="@Url.Action("Index","Login" )"> <p style="text-align:center;font-size: 25px">Tin Tức </p></a>
+        <a href="@Url.Action("Index","thongtin")"></a>
+    </b>
+</h4><br />
+<div class="row" style="        border: groove;
+        width: 80%;
+        height:500px;
+        margin-left: 150px;
+">
+    @Html.Raw(TempData["msg"])
+    @using (Html.BeginForm("EditAr", "TinTuc", FormMethod.Post, new { @class = "col-md-8", @style = "padding-top:30px", @onsubmit = "return matchin4()" }))
+    {
+        //<div class="col-md-8" style="padding-top:30px">
+
+        <table align="right">
+            <tr style="height: 70px">
+                <td style="width:25%;"><b>ID_Article</b></td>
+                <td>@Html.TextBoxFor(Model => Model.IdArticle, new { @class = "dtoid", @type = "Text", @autofocus = "autofocus", @id = "id", @placeholder = "Nhập max giáo viên", @size = "50px", @required = "", @readonly = "readonly" })</td>
+            </tr>
+            <tr style="height: 70px">
+                <td style="width:25%"><b>Tiêu Đề:</b></td>
+                <td>@Html.TextBoxFor(Model => Model.Title, new { @class = "dtoid", @type = "Text", @autofocus = "autofocus", @id = "id", @placeholder = "Nhập max giáo viên", @size = "50px", @required = "", @readonly = "readonly" })</td>
+
+            </tr>
+            <tr style=" height:70px">
+                <td style="width:25%"><b>Tóm Tắt:</b></td>
+                <td> @Html.TextBoxFor(Model => Model.Summary, new { @class = "dto", @type = "Text", @autofocus = "autofocus", @id = "email", @placeholder = "Nhập mail", @size = "50px", @required = "" })</td>
+            </tr>
+            <tr style="height: 70px">
+                <td style="width:25%;"><b>Nội Dung:</b></td>
+                <td>  @Html.TextBoxFor(Model => Model.Contents, new { @class = "dto", @type = "Text", @autofocus = "autofocus", @id = "phonegv", @placeholder = "Nhập mail", @required = "", @size = "50px" }) </td>
+            </tr>
+            <tr style="height: 70px">
+                <td style="width:25%;"><b>Ảnh:</b></td>
+                <td> @Html.TextBoxFor(Model => Model.Image, new { @class = "dto", @type = "Text", @autofocus = "autofocus", @id = "tdgv", @placeholder = "Nhập mail", @size = "50px", @required = "" })</td>
+            </tr>
+        </table>
+        <b> <input type="submit" name="btchange" value="Lưu" style="margin-left:60%;" /> &nbsp;</b>
+    }
+    <div>
+    </div>
+
+</div>

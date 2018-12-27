@@ -1,0 +1,66 @@
+﻿@model  IEnumerable<StartCodingNowWebManager.Areas.GIAOVIEN.Models.Teacher_Attendance>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/GIAOVIEN/Views/Shared/_Layout.cshtml";
+}
+<h4 align="left" style="color:blue; padding-top:30px">
+    <b>
+        <a href="@Url.Action("Index","Login")">Giáo viên</a>/
+        <a href="@Url.Action("Index","Chamcong")">Chấm công</a>
+    </b>
+</h4><br />
+     <div class="row" style=" width:100%; height:auto; padding-bottom:20px; border:groove">
+
+         @Html.RenderAction("Create", "Chamcong")
+         @Html.RenderAction("Update", "Chamcong")
+        
+
+         <div style="padding-top:50px;margin-top: 40px;">
+             <div style="margin-left:30px; margin-bottom:20px ;">
+                 <a href="@Url.Action("LinkThem","Chamcong")"><b style="color:red; font-family:'Times New Roman'; font-size:14">Thêm ngày công...</b></a>
+             </div>
+             <div style="float:left;width: 700px;">
+                 <div class="search_khoahoc" style=" padding-left: 100px; padding-bottom:20px ; margin-bottom:30px">
+                     @using (Html.BeginForm("Searchlop", "Chamcong", FormMethod.Post))
+                     {
+                         <div style="float:left; ">
+                             <h4 style="float:left; font-family:'Times New Roman'; margin-top:8px">Lớp</h4>
+                             @Html.DropDownList("lopsearch", null, new { @type = "text", @style = "width:200px; height:30px ; border:groove;  margin-left:20px" })
+                             @*<input type="text" style="width:200px; height:30px ; border:groove;  margin-left:20px" />*@
+                         </div>
+                         <div style="float:left; align-self:center;  ">
+                             <button type="submit" style="margin-left:60px">Tìm kiếm</button>
+                         </div>
+                     }
+                 </div>
+                 <table align="center" border="1" style="width:90% ;height:auto; float:left; margin-left:30px">
+                     <tr id="myTable" class="table_th">
+                         <th class="th">Tên lớp</th>
+                         <th class="th">Ngày</th>
+                         <th class="th">Buổi</th>
+                         <th class="th">Hoạt động</th>
+                     </tr>
+                     @Html.Raw(TempData["msg"])
+                     @foreach (var item in Model)
+                     {
+                         <tr class="table_th">
+                             <td class="td">@item.NameClass</td>
+                             <td class="td">@item.Day.Value.ToShortDateString()</td>
+                             <td class="td">@item.session</td>
+                             <td class="td">
+
+                                 <a href="@Url.Action("LinkUpdate","Chamcong",new { @id = item.ID })">Cập nhập |</a>
+                                 <a href="@Url.Action("Delete","Chamcong",new { @id = item.ID })"> |Xóa</a>
+
+                             </td>
+
+                         </tr>
+                     }
+                 </table>
+             </div>
+             
+             @Html.RenderAction("Luong", "Chamcong")
+         </div>
+
+     </div>
+

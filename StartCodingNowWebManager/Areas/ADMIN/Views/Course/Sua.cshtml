@@ -1,0 +1,142 @@
+﻿@model StartCodingNowWebManager.FF.Course
+
+@{
+    ViewBag.Title = "Sua";
+    Layout = "~/Areas/ADMIN/Views/Shared/_LayoutADD.cshtml";
+}
+
+
+@using (Html.BeginForm("Sua","Course",FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+   <div class="form-horizontal">
+        <h4>SỬA KHÓA HỌC</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Idcourse)
+        <div style = "float:left; border:groove; width:70%" >
+            <div style="padding:10%">
+                <div class="form-group">
+                    <div class="col-md-6" style="float:left">
+                        @Html.Label("Tên khóa Học")
+                    </div>
+                    <div class="col-md-6" style="float:right">
+                        @Html.TextBoxFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" }, @style = "width:100%", @required = "" })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6" style="float:left">
+                        @Html.Label("Độ Tuổi")
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" }, @style = "width:100%", @required = "" })
+                        @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6" style="float:left">
+                        @Html.Label("Số Lượng Học Sinh Tối Đa")
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.Maxnumber, new { htmlAttributes = new { @class = "form-control" }, @style = "width:100%", @required = "" })
+                        @Html.ValidationMessageFor(model => model.Maxnumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6" style="float:left">
+                        @Html.Label("Thời Lượng Khóa Học")
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.Time, new { htmlAttributes = new { @class = "form-control" }, @style = "width:100%", @required = "" })
+                        @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6" style="float:left">
+                        @Html.Label("Nội Dung Khóa Học")
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.Contents, new { htmlAttributes = new { @class = "form-control" }, @cols = "32", @rows = "5", @required = "" })
+                        @Html.ValidationMessageFor(model => model.Contents, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6" style="float:left; text-align:left">
+                        @Html.Label("Học Phí")
+                    </div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.Fee, new { htmlAttributes = new { @class = "form-control" }, @style = "width:100%", @required = "" })
+                        @Html.ValidationMessageFor(model => model.Fee, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" style="float:right; border:0;width:30%">
+            <br />
+            <div class="col-md-10" style="width:100%">
+                @*@Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                <img src="@Url.Content(Model.Image)" height="220px" width="200px" id="anhnen"/>
+              
+                <div>
+                    <input multiple required class="form-control" accept="image/.jpg,image/.png" onchange="ShowImagePreview(this,document.getElementById('anhnen'))" type="file" name="files" id="anhnen"  />
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type = "submit" value="Lưu" class="btn btn-default" style="position: absolute;right: 65%; margin-top: 5%;width:10%" />
+            </div>
+        </div>
+   </div>     
+}
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <a href = "@Url.Action("Course","Course")"> <button class="btn btn-default" style="position: absolute;right: 83%; margin-top: 3.2%; width:10%">Hủy</button> </a>
+    </div>
+</div>
+
+
+<script>
+    function readURL(input, id)
+{
+
+    if (input.files && input.files[0])
+    {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+                // alert("fff");
+                $(id)
+                    .attr('src', e.target.result)
+                    .width(200)
+                    .height(200);
+
+        };
+        reader.readAsDataURL(input.files[0]);
+
+        //$("#anhdaidientxtfor").val()=dt;
+    }
+
+
+    }
+    function ShowImagePreview(imageUploader, previewImage) {
+        if (imageUploader.files && imageUploader.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(previewImage).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(imageUploader.files[0]);
+        }
+    }
+</script>

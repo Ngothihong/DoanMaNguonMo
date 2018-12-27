@@ -1,0 +1,20 @@
+﻿
+
+@foreach (var item in ViewData["Top3"] as List<StartCodingNowWebManager.ApiCommunicationModels.ThanhDatAPI.ProductModel>)
+{
+<div class="product-go" style="background-color:antiquewhite;margin-top:20px">
+    <div class="product-at ">
+        <a href="/USER/RoBo/Detail/@item.Idrobot">
+            <img class="img-responsive" src="@Url.Content(item.Image)" style="height:250px" alt="">
+
+        </a>
+    </div>
+    <p class="tun">@item.Name</p>
+    <h4 class="number item_price" style="background-color:orangered ; color:white ; text-align:center;height:30px;padding-top
+    :7px">
+        @item.Price
+    </h4>
+</div>
+
+          
+}
