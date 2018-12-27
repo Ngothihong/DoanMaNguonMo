@@ -15,12 +15,19 @@ using StartCodingNowWebManager.Common;
 using StartCodingNowWebManager.ApiCommunicationTools;
 using StartCodingNowWebManager.ApiCommunicationModels.HongHeoAPI;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
 
 namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
 {
+   
     [Area("ADMIN")]
     public class TinTucController : Controller
     {
+        private IHostingEnvironment _env;
+    public TinTucController(IHostingEnvironment env)
+    {
+        _env = env;
+    }
         // GET: ADMIN/TinTuc
        // QL_SCN db = new QL_SCN();
         DAO_TinTuc dao = new DAO_TinTuc();
@@ -85,23 +92,20 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddArticle(ArticleModel article, List<IFormFile> files)
+        public ActionResult AddArticle(ArticleModel article, IFormFile files)
         {
-            long size = files.Sum(f => f.Length);
-
+            var uploads = Path.Combine(_env.WebRootPath.Replace("\\wwwroot", ""), "Assets\\Image\\IMGAR");
             // full path to file in temp location
-            var filePath = "~/Assets/Image/IMGAR" + article.IdArticle + "_" + article.IdMenu + ".jpg";
-
-            foreach (var formFile in files)
+            var filePath = Path.Combine(uploads, article.IdArticle + "_" + article.IdMenu + ".jpg");/*"~/Assets/Image/" + course.Idcourse + "update.jpg";*/
+                                                                            //   var uploads = Path.Combine(_environment.WebRootPath, "uploads");
+            if (files.Length > 0)
             {
-                if (formFile.Length > 0)
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        formFile.CopyToAsync(stream);
-                    }
+                    files.CopyTo(fileStream);
                 }
-            }           
+            }
+               
             article.Image = article.IdArticle + "_" + article.IdMenu + ".jpg";
             if (dao.Insert_Article(article))
             {
@@ -122,24 +126,20 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditArticle(ArticleModel article, List<IFormFile> files)
+        public ActionResult EditArticle(ArticleModel article, IFormFile files)
         {
-
-            long size = files.Sum(f => f.Length);
-
+            var uploads = Path.Combine(_env.WebRootPath.Replace("\\wwwroot", ""), "Assets\\Image\\IMGAR");
             // full path to file in temp location
-            var filePath = "~/Assets/Image/IMGAR" + article.IdArticle + "_" + article.IdMenu + ".jpg";
-
-            foreach (var formFile in files)
+            var filePath = Path.Combine(uploads, article.IdArticle + "_" + article.IdMenu + ".jpg");/*"~/Assets/Image/" + course.Idcourse + "update.jpg";*/
+                                                                                                    //   var uploads = Path.Combine(_environment.WebRootPath, "uploads");
+            if (files.Length > 0)
             {
-                if (formFile.Length > 0)
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        formFile.CopyToAsync(stream);
-                    }
+                    files.CopyTo(fileStream);
                 }
             }
+            
             article.Image = article.IdArticle + "_" + article.IdMenu + ".jpg";
             if (dao.Update_ARTICLEs(article))
             {

@@ -53,23 +53,20 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Them(Course course, List<IFormFile> files)
+        public ActionResult Them(Course course, IFormFile files)
         {
-            long size = files.Sum(f => f.Length);
-
+            var uploads = Path.Combine(_env.WebRootPath.Replace("\\wwwroot", ""), "Assets\\Image");
             // full path to file in temp location
-            var filePath = "~/Assets/Image/" + course.Idcourse + "1.jpg";
-
-            foreach (var formFile in files)
+            var filePath = Path.Combine(uploads, course.Idcourse + "1.jpg");/*"~/Assets/Image/" + course.Idcourse + "update.jpg";*/
+                                                                                 //   var uploads = Path.Combine(_environment.WebRootPath, "uploads");
+            if (files.Length > 0)
             {
-                if (formFile.Length > 0)
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        formFile.CopyToAsync(stream);
-                    }
+                    files.CopyTo(fileStream);
                 }
             }
+
 
             course.Image = "~/Assets/Image/" + course.Idcourse + "1.jpg";
             if (dao.Insert_Course(course))
@@ -88,28 +85,26 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
             var bien = dao.Get_DetailCourse(id);
             return View(bien);
         }
-         
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Sua(Course course, List<IFormFile> files)
+        public ActionResult Sua(Course course, IFormFile files)
         {
             var filePath1 = Path.GetTempFileName();
-            long size = files.Sum(f => f.Length);
+            // long size = files.Sum(f => f.Length);
             var uploads = Path.Combine(_env.WebRootPath.Replace("\\wwwroot", ""), "Assets\\Image");
             // full path to file in temp location
-            var filePath = Path.Combine(uploads, course.Idcourse + "update.tmp");/*"~/Assets/Image/" + course.Idcourse + "update.jpg";*/
-
-            foreach (var formFile in files)
+            var filePath = Path.Combine(uploads, course.Idcourse + "update.jpg");/*"~/Assets/Image/" + course.Idcourse + "update.jpg";*/
+                                                                                 //   var uploads = Path.Combine(_environment.WebRootPath, "uploads");
+            if (files.Length > 0)
             {
-                if (formFile.Length > 0)
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        formFile.CopyToAsync(stream);
-                    }
+                    files.CopyTo(fileStream);
                 }
             }
-           
+
+
             course.Image = "~/Assets/Image/" + course.Idcourse + "update.jpg";
             if (dao.Update_Course(course))
             {
