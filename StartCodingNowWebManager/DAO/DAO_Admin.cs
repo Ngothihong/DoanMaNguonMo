@@ -6,6 +6,7 @@ using StartCodingNowWebManager.FF;
 using StartCodingNowWebManager.Common;
 using StartCodingNowWebManager.Areas.GIAOVIEN.Models;
 using StartCodingNowWebManager.ApiCommunicationTools;
+using StartCodingNowWebManager.ApiCommunicationModels.KimAnhAPI;
 
 namespace StartCodingNowWebManager.DAO
 {
@@ -49,9 +50,19 @@ namespace StartCodingNowWebManager.DAO
 
 
         //TEACHER-------------------------------------------------
-        public List<Teacher> List_Teacher()
+        public List<TeacherModel> List_Teacher()
         {
-            return db.Teacher.ToList();
+            var data = new List<TeacherModel>();
+            try
+            {
+               return data = ApiClientFactory.KimAnhInstance.getAllTeacher();
+                
+            }
+            catch
+            {
+                return null;
+            }
+            
         }
         public int Exist_Teacher( string email)
         {
@@ -62,96 +73,44 @@ namespace StartCodingNowWebManager.DAO
             }
             return -1;
         }
-        public bool Insert_Teacher(Teacher tc)
+        public bool Insert_Teacher(TeacherModel tc)
         {
-            var tmp = Exist_Teacher(tc.Email);
-            if (tmp == -1)
-            {
-                db.Teacher.Add(tc);
-                db.SaveChanges();
-                var bien_tmp = Exist_Teacher(tc.Email);
-                if (bien_tmp != -1)
-                {
-                    Account tk = new Account();
-                    tk.Idteacher = bien_tmp;
-                    tk.Username = tc.Email;
-                    tk.Password = Encryptor.MD5Hash(tc.Email);
-                    tk.Status = 1;
-                    db.Account.Add(tk);
-                    db.SaveChanges();
-                    return true;
-                }
-                else
-                    return false;
-                
-            }
-            else
-                return false;
+
+               var m =ApiClientFactory.KimAnhInstance.AddTeacher(tc);
+               return m.IsSuccess;
+           
+            
         }
-        public Teacher Get_Teacher(int id)
-        {
-            return db.Teacher.Find(id);
-        }
-        public bool Update_Teacher(Teacher tc)
+        public TeacherModel Get_Teacher(int id)
         {
             try
             {
-                var bien = db.Teacher.Find(tc.Idteacher);
-                if (bien != null)
-                {
-                    bien.Name = tc.Name;
-                    bien.Sex = tc.Sex;
-                    bien.Phone = tc.Phone;
-                    bien.Address = tc.Address;
-                    bien.Email = tc.Email;
-                    bien.Knowledge = tc.Knowledge;
-                    bien.Status = tc.Status;
-                    db.SaveChanges();
-                    var bien1 = db.Account.Find(tc.Idteacher);
-                    if (bien1 != null)
-                    {
-                        bien1.Status = tc.Status;
-                        db.SaveChanges();
-                    }
-                    return true;
-                }
-                return false;
+              return ApiClientFactory.KimAnhInstance.GetTeacher(id).Data;
             }
-            catch (Exception e)
+            catch
             {
-                return false;
-                throw e;
+                return null;
             }
+            
+        }
+        public bool Update_Teacher(TeacherModel tc)
+        {
+            var m = ApiClientFactory.KimAnhInstance.UpdateTeacher(tc);
+            return m.IsSuccess;
+            
         }
 
        
         public bool Delete_Teacher(int id)
         {
-            var bien = db.Teacher.Where(a => a.Idteacher == id).SingleOrDefault();
-            var temp = db.TeachingClass.Where(a => a.Idteacher == id).SingleOrDefault();
-            if (bien != null) // ton tai
-            {
-                if(temp != null) // ton tai
-                {
-                    return false;
-                }
-                else // khong ton tai
-                {
-                    var bien1 = db.Account.Where(a => a.Idteacher == id).SingleOrDefault();
-                    db.Account.Remove(bien1);
-                    db.SaveChanges();
-                    db.Teacher.Remove(bien);
-                    db.SaveChanges();
-                    return true;
-                }
-            }
-            else
-                return false;
+            var m = ApiClientFactory.KimAnhInstance.DeleteTeacher(id);
+            return m.IsSuccess;
         }
-         public List<Teacher> Search_Teacher(string key)
+         public List<TeacherModel> Search_Teacher(string key)
         {
-            
-              return db.Teacher.Where(x => x.Name.Contains(key) || x.Address.Contains(key) || x.Knowledge.Contains(key)).ToList();       
+            var data = new List<TeacherModel>();
+            return data = ApiClientFactory.KimAnhInstance.SearchTeacher(key).Data;
+            //return db.Teacher.Where(x => x.Name.Contains(key) || x.Address.Contains(key) || x.Knowledge.Contains(key)).ToList();       
             
         }
 
@@ -363,8 +322,9 @@ namespace StartCodingNowWebManager.DAO
         }
 
         //COURSE------------------------------------------------------------------
-        public List<Course> Get_Course()
+        public List<CourseModel> Get_Course()
         {
+           // ApiClientFactory.KimAnhInstance.Getc
             return db.Course.ToList();
         }
         public List<Course> Search_Course(string key)

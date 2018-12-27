@@ -32,11 +32,11 @@ namespace StartCodingNowWebManager.ApiCommunicationTools
                 "Teacher/UpdateTeacher"));
             return PostAsync<TeacherModel>(requestUrl, model);
         }
-        public Message<TeacherModel> SearchTeacher(string id)
+        public Message<List<TeacherModel>> SearchTeacher(string id)
         {
             var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                 "Teacher/SearchTeacher"));
-            return PostAsync<TeacherModel, string>(requestUrl, id);
+            return PostAsync<List<TeacherModel>, string>(requestUrl, id);
         }
         public Message<TeacherModel> DeleteTeacher(int id)
         {

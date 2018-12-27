@@ -41,11 +41,14 @@ namespace StartCodingNowWebManager.ApiCommunicationTools
                 "Phanbo/GetphabobyIDlop"));
             return PostAsync<PhanboModel, int>(requestUrl, id);
         }
-        public Message<PhanboModel> AddPhanbo(PhanboModel model)
+        public Message<PhanboModel> AddPhanbo(int Idclass, int IdTeacher)
         {
+            int[] id = null;
+            id[0] = Idclass;
+            id[1] = IdTeacher;
             var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                 "Phanbo/AddPhanbo"));
-            return PostAsync<PhanboModel>(requestUrl, model);
+            return PostAsync<PhanboModel,int[]>(requestUrl, id);
         }
         public Message<PhanboModel> RemovePhanbo(int Idclass, int IdTeacher)
         {
