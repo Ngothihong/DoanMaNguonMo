@@ -1,12 +1,10 @@
-﻿@model StartCodingNowWebManager.FF.RigistrationCourse
-
+﻿@model StartCodingNowWebManager.ApiCommunicationModels.KimAnhAPI.RegistrationCourseModel
+@using StartCodingNowWebManager.ApiCommunicationTools;
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/ADMIN/Views/Shared/_LayoutADD.cshtml";
 }
-
 <h2>Details</h2>
-
 <div>
     <h4>RIGISTRATION_COURSE</h4>
     <hr />
@@ -14,67 +12,51 @@
         <dt>
             <label>Tên khóa học</label>
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.IdcourseNavigation.Name)
+            @Html.Display(ApiClientFactory.KimAnhInstance.GetCourse(Model.Idcourse).Data.Name)
         </dd>
-
         <dt>
-           <label>Phụ huynh</label>
+            <label>Phụ huynh</label>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.NameParent)
         </dd>
-
         <dt>
             <label>Số điện thoại</label>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Phone)
         </dd>
-
         <dt>
             <label>Email</label>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Email)
         </dd>
-
         <dt>
             <label>Tên học viên</label>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.NameStudent)
         </dd>
-
         <dt>
             <label>Ngày sinh</label>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Birthday)
         </dd>
-
         <dt>
             <label>Địa chỉ</label>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Address)
         </dd>
-
         <dt>
             <label>Trạng thái</label>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.State)
         </dd>
-
     </dl>
 </div>
 <p>

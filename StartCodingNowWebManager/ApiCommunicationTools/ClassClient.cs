@@ -43,11 +43,11 @@ namespace StartCodingNowWebManager.ApiCommunicationTools
             return PostAsync<ClassModel>(requestUrl, model);
         }
 
-        public Message<ClassModel> RemoveClass(ClassModel model)
+        public Message<ClassModel> RemoveClass(int id)
         {
             var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                 "Class/RemoveClass"));
-            return PostAsync<ClassModel>(requestUrl, model);
+            return PostAsync<ClassModel, int>(requestUrl, id);
         }
 
         
