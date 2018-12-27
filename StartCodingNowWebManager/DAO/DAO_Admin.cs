@@ -158,23 +158,39 @@ namespace StartCodingNowWebManager.DAO
 
 
         //STUDENT--------------------------------------------------------
-        public List<Student> List_Student()
-        {
-            return db.Student.ToList();
-        }
-        public List<Student> Search_Student(string key)
-        {
-
-            return db.Student.Where(x => x.Name.Contains(key) || x.Address.Contains(key) || x.NameParent.Contains(key)).ToList();
-
-        }
-        public bool Insert_Student(Student student)
+        public List<StudentModel> List_Student()
         {
             try
             {
-                db.Student.Add(student);
-                db.SaveChanges();
-                return true;
+                var students = ApiClientFactory.KimAnhInstance.GetAllStudent();
+                return students.ToList();
+            }
+            catch
+            {
+                return null;
+            }
+           
+        }
+        public List<StudentModel> Search_Student(string key)
+        {
+            try
+            {
+                var students = ApiClientFactory.KimAnhInstance.Search_Student(key);
+                return students;
+            }
+            catch
+            {
+                return null;
+            }
+           
+
+        }
+        public bool Insert_Student(StudentModel student)
+        {
+            try
+            {
+                var addstudent = ApiClientFactory.KimAnhInstance.Insert_Student(student);              
+                return addstudent.IsSuccess;
             }
             catch
             {
@@ -182,61 +198,61 @@ namespace StartCodingNowWebManager.DAO
             }
         }
 
-        public Student Get_student(int id)
+        public StudentModel Get_student(int id)
         {
-            return db.Student.Find(id);
-        }
-        public bool Update_Student(Student student)
-        {
-            var bien = db.Student.Where(x => x.Idstudent == student.Idstudent).SingleOrDefault();
-            if (bien != null)
+            try
             {
-                bien.Name = student.Name;
-                bien.Sex = student.Sex;
-                bien.Born = student.Born;
-                bien.NameParent = student.NameParent;
-                bien.Phone = student.Phone;
-                bien.Address = student.Address;
-                bien.Email = student.Email;
-                db.SaveChanges();
-                return true;
+                var addstudent = ApiClientFactory.KimAnhInstance.GetAllStudent().Where(r => r.Idstudent == id).FirstOrDefault();
+                return addstudent;
             }
-            else
-                return false;
+            catch
+            {
+                return null;
+            }
+           
         }
+        public bool Update_Student(StudentModel student)
+        {
+            try
+            {
+                var updatestudent = ApiClientFactory.KimAnhInstance.Update_Student(student);
+                return updatestudent.IsSuccess;
+            }
+            catch
+            {
+                return false;
+            }
+      }
          public bool Delete_Student(int id)
         {
-            var bien = db.Student.Find(id);
-            if (bien != null)
+            try
             {
-                ClassStudent bien1 = db.ClassStudent.Where(x => x.Idstudent == id).SingleOrDefault();
-                if (bien1 != null)
-                {
-                    db.ClassStudent.Remove(bien1);
-                    db.SaveChanges();
-                    db.Student.Remove(bien);
-                    db.SaveChanges();
-                    return true;
-                }
-                else
-                {
-                    db.Student.Remove(bien);
-                    db.SaveChanges();
-                    return true;
-                }
+                return ApiClientFactory.KimAnhInstance.Delete_Student(id).IsSuccess;
             }
-            else
+            catch
+            {
                 return false;
+            }
+
         }
 
         public bool Exit_Idstudent(int id)
         {
-            if (db.Student.Find(id) != null)
+            try
             {
-                return true;
+                var a = ApiClientFactory.KimAnhInstance.GetAllStudent().Where(t=>t.Idstudent==id).FirstOrDefault();
+                if (a != null)
+                {
+                    return true;
+                }
+                else
+                    return false;
             }
-            else
+            catch
+            {
                 return false;
+            }
+          
         }
 
         public bool Check(int id_student, int id_class)
@@ -249,6 +265,7 @@ namespace StartCodingNowWebManager.DAO
         }
         public bool ClassStudent(int id_student, int id_class)
         {
+            var a = ApiClientFactory.KimAnhInstance.;
             if (Exit_Idstudent(id_student))
             {
                 for (int i = 1; i <= 12; i++)
@@ -280,21 +297,31 @@ namespace StartCodingNowWebManager.DAO
         //Class----------------------------------------------------------------------------
         public IEnumerable<Class_model> Get_Class()
         {
-            var list = (from x in db.Class
-                        join y in db.Course
-                        on x.Idcourse equals y.Idcourse
-                        select new Class_model
-                        {
-                            IDClass = x.Idclass,
-                            NameClass = x.NameClass,
-                            NameCourse = y.Name,
-                            StartDay = x.StartDay,
-                            FinishDay = x.FinishDay,
-                            Number = x.Number,
-                            State = x.State
-                        }
+            try
+            {
+                var classp = ApiClientFactory.KimAnhInstance.getAllClass();
+                var coursep = ApiClientFactory.KimAnhInstance.GetAllCourse();
+                var list = (from x in classp
+                            join y in coursep
+                                 on x.Idcourse equals y.Idcourse
+                                 select new Class_model
+                                 {
+                                     IDClass = x.Idclass,
+                                     NameClass = x.NameClass,
+                                     NameCourse = y.Name,
+                                     StartDay = x.StartDay,
+                                     FinishDay = x.FinishDay,
+                                     Number = x.Number,
+                                     State = x.State
+                                 }
                         );
-            return list.ToList();
+                return list.ToList();
+            }
+            catch
+            {
+                return null;
+            }
+           
         }
 
         public List<Class_model> Search_Class(string key)
@@ -303,20 +330,28 @@ namespace StartCodingNowWebManager.DAO
             return bien1.Where(x => x.NameClass.Contains(key) || x.NameCourse.Contains(key)).ToList();
         }
 
-        public IEnumerable<Course> GetName_Course()
-        {
-            var bien = (from a in db.Course
-                        select a);
-            return bien.ToList().Distinct();
-        }
-         public bool Insert_Class(Class lop)
+        public IEnumerable<CourseModel> GetName_Course()
         {
             try
             {
-                lop.Number = 0;
-                db.Class.Add(lop);
-                db.SaveChanges();
-                return true;
+                var coursep = ApiClientFactory.KimAnhInstance.GetAllCourse();
+                var bien = (from a in coursep
+                            select a);
+                return bien.ToList().Distinct();
+            }
+            catch
+            {
+                return null;
+            }
+            
+        }
+         public bool Insert_Class(ClassModel lop)
+        {
+            try
+            {
+                var a = ApiClientFactory.KimAnhInstance.AddClass(lop);
+              
+                return a.IsSuccess;
             }
             catch
             {
@@ -324,43 +359,46 @@ namespace StartCodingNowWebManager.DAO
             }
         }
         
-        public Class Get_DetailClass(int id)
+        public ClassModel Get_DetailClass(int id)
         {
-            return db.Class.Find(id);
-        }
-        public bool Update_Class(Class lop)
-        {
-            var bien = db.Class.Where(x => x.Idclass == lop.Idclass).SingleOrDefault();
-            if (bien != null)
+            try
             {
-                bien.Idcourse = lop.Idcourse;
-                bien.NameClass = lop.NameClass;
-                bien.StartDay = lop.StartDay;
-                bien.FinishDay = lop.FinishDay;
-                bien.State = lop.State;
-                db.SaveChanges();
-                return true;
+                var a = ApiClientFactory.KimAnhInstance.getAllClass();
+                return a.Where(v=>v.Idclass==id).FirstOrDefault();
+               
             }
-            else
+            catch
+            {
+                return null;
+            }
+            
+        }
+        public bool Update_Class(ClassModel lop)
+        {
+            try
+            {
+                var a = ApiClientFactory.KimAnhInstance.UpdateClass(lop);
+                return a.IsSuccess;
+
+            }
+            catch
+            {
                 return false;
+            }
         }
         
         public bool Delete_Class(int id)
         {
-            var bien = db.Class.Find(id);
-            if (bien != null)
+            try
             {
-                if (bien.Number == 0)
-                {
-                    db.Class.Remove(bien);
-                    db.SaveChanges();
-                    return true;
-                }
-                else
-                    return false;
+                var a = ApiClientFactory.KimAnhInstance.RemoveClass(id);
+                return a.IsSuccess;
+
             }
-            else
+            catch
+            {
                 return false;
+            }
         }
 
         //COURSE------------------------------------------------------------------

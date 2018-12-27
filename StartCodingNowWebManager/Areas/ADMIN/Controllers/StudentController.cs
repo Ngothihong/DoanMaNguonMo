@@ -10,13 +10,15 @@ using Microsoft.AspNetCore.Mvc;
 using Sakura.AspNetCore;
 using StartCodingNowWebManager.Helpers;
 using StartCodingNowWebManager.Common;
+using StartCodingNowWebManager.ApiCommunicationTools;
+using StartCodingNowWebManager.ApiCommunicationModels.KimAnhAPI;
 
 namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
 {
     [Area("ADMIN")]
     public class StudentController : Controller
     {
-        private QL_SCN db = new QL_SCN();
+       // private QL_SCN db = new QL_SCN();
         // GET: ADMIN/Student
         DAO_Admin dao = new DAO_Admin();
         public ActionResult Student(string Search, int? page)
@@ -47,7 +49,7 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
         }
 
         [HttpPost]
-        public ActionResult Them(Student student)
+        public ActionResult Them(StudentModel student)
         {
             if (dao.Insert_Student(student))
             {
@@ -67,7 +69,7 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
             return View(bien);
         }
         [HttpPost]
-        public ActionResult Sua(Student student)
+        public ActionResult Sua(StudentModel student)
         {
             if (dao.Update_Student(student))
             {
@@ -95,35 +97,8 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
             }
         }
 
-        public ActionResult ChonLop(int id, int? page)
-        {
-            var model = dao.Get_Class();
-            ViewBag.IDStudent = id;
-            int pagesize = 15;
-            int pagenumber = (page ?? 1);
-            return View(model.ToPagedList(pagenumber, pagesize));
-        }
-
+       
         
-        [HttpPost]
-        public JsonResult ThemN(int[] a, int id_student)
-        {
-            //mang a
-            var id = db.Student.SingleOrDefault(x => x.Idstudent == id_student);
-                if(id != null) { 
-                for (int i = 1; i <= a.Length; i++)
-                {
-                    if (dao.Check(id_student, a[i]))
-                    {
-                        dao.ClassStudent(id_student, a[i]);
-                    }
-
-                } }
-            return Json(new
-            {
-                status = true
-            });
-        }
-        
+       
     }
 }

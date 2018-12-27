@@ -38,5 +38,14 @@ namespace StartCodingNowWebManager.ApiCommunicationTools
                 "Student/Delete_Student"));
             return PostAsync<StudentModel, int>(requestUrl, id);
         }
+        public Message<StudentModel> Class_student(int idstudent, int idclass)
+        {
+            int[] id= null;
+            id[0] = idstudent;
+            id[1] = idclass;
+            var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                "Student/Class_student"));
+            return PostAsync<StudentModel, int[]>(requestUrl, id);
+        }
     }
 }

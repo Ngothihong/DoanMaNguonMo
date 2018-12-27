@@ -9,6 +9,8 @@ using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using StartCodingNowWebManager.ApiCommunicationTools;
+using StartCodingNowWebManager.ApiCommunicationModels.KimAnhAPI;
 using StartCodingNowWebManager.Common;
 using StartCodingNowWebManager.FF;
 using StartCodingNowWebManager.Helpers;
@@ -18,7 +20,7 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
     [Area("ADMIN")]
     public class Rigistration_courseController : Controller
     {
-        private QL_SCN db = new QL_SCN();
+     //   private QL_SCN db = new QL_SCN();
 
         // GET: ADMIN/Rigistration_course
         public ActionResult Index()
@@ -26,8 +28,17 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
             var session = SessionHelper.GetObjectFromJson<string>(HttpContext.Session, CommonConstant.USER_SESSION);
             if (!string.IsNullOrEmpty(session))
             {
-                var rIGISTRATION_COURSE = db.RigistrationCourse;
-                return View(rIGISTRATION_COURSE.AsQueryable());
+                try
+                {
+                    var rigis = ApiClientFactory.KimAnhInstance.GetAllRegister();
+                    var rIGISTRATION_COURSE = rigis;
+                    return View(rIGISTRATION_COURSE.AsQueryable());
+                }
+                catch
+                {
+                    return View();
+                }
+               
             }
             else
             {
@@ -42,7 +53,8 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
             {
                 return View();
             }
-            RigistrationCourse rIGISTRATION_COURSE = db.RigistrationCourse.Find(id);
+            var rigis = ApiClientFactory.KimAnhInstance.GetAllRegister().Where(n=>n.Idregist==id).FirstOrDefault();
+            RegistrationCourseModel rIGISTRATION_COURSE = rigis;
             if (rIGISTRATION_COURSE == null)
             {
                 return View();
@@ -53,7 +65,8 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
         // GET: ADMIN/Rigistration_course/Create
         public ActionResult Create()
         {
-            ViewBag.IDCourse = new SelectList(db.Course, "IDCourse", "Name");
+            var a = ApiClientFactory.KimAnhInstance.GetAllCourse();
+            ViewBag.IDCourse = new SelectList(a, "Idcourse", "Name");
             return View();
         }
 
@@ -62,16 +75,16 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(RigistrationCourse rIGISTRATION_COURSE)
+        public ActionResult Create(RegistrationCourseModel rIGISTRATION_COURSE)
         {
             if (ModelState.IsValid)
             {
-                db.RigistrationCourse.Add(rIGISTRATION_COURSE);
-                db.SaveChanges();
+                var ba = ApiClientFactory.KimAnhInstance.AddRegister(rIGISTRATION_COURSE);
+              
                 return RedirectToAction("Index");
             }
-
-            ViewBag.IDCourse = new SelectList(db.Course, "IDCourse", "Name", rIGISTRATION_COURSE.Idcourse);
+            var a = ApiClientFactory.KimAnhInstance.GetAllCourse();
+            ViewBag.IDCourse = new SelectList(a, "Idcourse", "Name", rIGISTRATION_COURSE.Idcourse);
             return View(rIGISTRATION_COURSE);
         }
 
@@ -82,12 +95,15 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
             {
                 return View();
             }
-            RigistrationCourse rIGISTRATION_COURSE = db.RigistrationCourse.Find(id);
+            var rigis = ApiClientFactory.KimAnhInstance.GetAllRegister().Where(n => n.Idregist == id).FirstOrDefault();
+            RegistrationCourseModel rIGISTRATION_COURSE = rigis;
+           
             if (rIGISTRATION_COURSE == null)
             {
                 return View();
             }
-            ViewBag.IDCourse = new SelectList(db.Course, "IDCourse", "Name", rIGISTRATION_COURSE.Idcourse);
+            var a = ApiClientFactory.KimAnhInstance.GetAllCourse();
+            ViewBag.IDCourse = new SelectList(a, "Idcourse", "Name", rIGISTRATION_COURSE.Idcourse);
             return View(rIGISTRATION_COURSE);
         }
 
@@ -96,15 +112,15 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( RigistrationCourse rIGISTRATION_COURSE)
+        public ActionResult Edit(RegistrationCourseModel rIGISTRATION_COURSE)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(rIGISTRATION_COURSE).State = EntityState.Modified;
-                db.SaveChanges();
+                var m = ApiClientFactory.KimAnhInstance.UpdateRegister(rIGISTRATION_COURSE);
                 return RedirectToAction("Index");
             }
-            ViewBag.IDCourse = new SelectList(db.Course, "IDCourse", "Name", rIGISTRATION_COURSE.Idcourse);
+            var a = ApiClientFactory.KimAnhInstance.GetAllCourse();
+            ViewBag.IDCourse = new SelectList(a, "Idcourse", "Name", rIGISTRATION_COURSE.Idcourse);
             return View(rIGISTRATION_COURSE);
         }
 
@@ -115,7 +131,8 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
             {
                 return View();
             }
-            RigistrationCourse rIGISTRATION_COURSE = db.RigistrationCourse.Find(id);
+            var rigis = ApiClientFactory.KimAnhInstance.GetAllRegister().Where(n => n.Idregist == id).FirstOrDefault();
+            RegistrationCourseModel rIGISTRATION_COURSE = rigis;
             if (rIGISTRATION_COURSE == null)
             {
                 return View();
@@ -124,23 +141,8 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
         }
 
         // POST: ADMIN/Rigistration_course/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            RigistrationCourse rIGISTRATION_COURSE = db.RigistrationCourse.Find(id);
-            db.RigistrationCourse.Remove(rIGISTRATION_COURSE);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+      
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
     }
 }

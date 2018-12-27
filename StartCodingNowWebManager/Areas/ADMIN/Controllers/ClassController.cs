@@ -9,6 +9,7 @@ using StartCodingNowWebManager.DAO;
 using StartCodingNowWebManager.Common;
 using StartCodingNowWebManager.FF;
 using StartCodingNowWebManager.Helpers;
+using StartCodingNowWebManager.ApiCommunicationModels.KimAnhAPI;
 
 namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
 {
@@ -51,7 +52,7 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
         }
 
         [HttpPost]
-        public ActionResult Them(Class lop)
+        public ActionResult Them(ClassModel lop)
         {
             if (dao.Insert_Class(lop))
             {
@@ -73,7 +74,7 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
         }
 
         [HttpPost]
-        public ActionResult Sua(Class lop)
+        public ActionResult Sua(ClassModel lop)
         {
             if (dao.Update_Class(lop))
             {

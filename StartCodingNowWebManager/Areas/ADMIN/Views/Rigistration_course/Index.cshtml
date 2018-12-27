@@ -1,5 +1,5 @@
-﻿@model IEnumerable<StartCodingNowWebManager.FF.RigistrationCourse>
-
+﻿@model IEnumerable<StartCodingNowWebManager.ApiCommunicationModels.KimAnhAPI.RegistrationCourseModel>
+@using StartCodingNowWebManager.ApiCommunicationTools;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/ADMIN/Views/Shared/_LayoutADD.cshtml";
@@ -52,7 +52,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.IdcourseNavigation.Name)
+            @Html.Display(ApiClientFactory.KimAnhInstance.GetCourse(item.Idcourse).Data.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NameParent)
