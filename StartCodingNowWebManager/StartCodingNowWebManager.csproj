@@ -118,6 +118,7 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="Sakura.AspNetCore.Mvc.PagedList" Version="2.0.12" />
     <PackageReference Include="Sakura.AspNetCore.PagedList" Version="2.0.2" />
