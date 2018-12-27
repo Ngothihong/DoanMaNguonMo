@@ -8,7 +8,7 @@ namespace StartCodingNowWebManager.ApiCommunicationTools
 {
     public partial class ApiClient
     {
-        public List<ClassModel> GetAllClass()
+        public List<ClassModel> getAllClass()
         {
             var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                 "Class/GetAllClass"));

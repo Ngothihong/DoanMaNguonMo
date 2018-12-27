@@ -36,11 +36,11 @@ namespace StartCodingNowWebManager.ApiCommunicationTools
             return PostAsync<CourseModel>(requestUrl, model);
         }
 
-        public Message<CourseModel> DeleteCourse(CourseModel model)
+        public Message<CourseModel> DeleteCourse(String id)
         {
             var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                 "Course/DeleteCourse"));
-            return PostAsync<CourseModel>(requestUrl, model);
+            return PostAsync<CourseModel,String>(requestUrl,id);
         }
 
         public Message<CourseModel> SearchCourse(string search)

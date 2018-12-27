@@ -54,7 +54,7 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Them(Course course, IFormFile files)
+        public ActionResult Them(CourseModel course, IFormFile files)
         {
             var uploads = Path.Combine(_env.WebRootPath.Replace("\\wwwroot", ""), "Assets\\Image");
             // full path to file in temp location
@@ -89,7 +89,7 @@ namespace StartCodingNowWebManager.Areas.ADMIN.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Sua(Course course, IFormFile files)
+        public ActionResult Sua(CourseModel course, IFormFile files)
         {
             var filePath1 = Path.GetTempFileName();
             // long size = files.Sum(f => f.Length);
