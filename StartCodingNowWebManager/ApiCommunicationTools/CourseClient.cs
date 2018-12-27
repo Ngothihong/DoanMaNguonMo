@@ -6,13 +6,13 @@ using StartCodingNowWebManager.ApiCommunicationModels.KimAnhAPI;
 
 namespace StartCodingNowWebManager.ApiCommunicationTools
 {
-    public partial class CourseClient
+    public partial class ApiClient
     {
         public List<CourseModel> GetAllCourse()
         {
             var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                "Article/GetAllArticles"));
-            return GetAsync<List<ArticleModel>>(requestUrl);
+                "Course/GetAllCourse"));
+            return GetAsync<List<CourseModel>>(requestUrl);
         }
     }
 }

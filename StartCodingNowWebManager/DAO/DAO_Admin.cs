@@ -6,6 +6,7 @@ using StartCodingNowWebManager.FF;
 using StartCodingNowWebManager.Common;
 using StartCodingNowWebManager.Areas.GIAOVIEN.Models;
 using StartCodingNowWebManager.ApiCommunicationTools;
+using StartCodingNowWebManager.ApiCommunicationModels.KimAnhAPI;
 
 namespace StartCodingNowWebManager.DAO
 {
@@ -363,13 +364,30 @@ namespace StartCodingNowWebManager.DAO
         }
 
         //COURSE------------------------------------------------------------------
-        public List<Course> Get_Course()
+        public List<CourseModel> Get_Course()
         {
-            return db.Course.ToList();
+            try
+            {
+                var course = ApiClientFactory.KimAnhInstance.GetAllCourse();
+                return course;
+            }
+            catch
+            {
+                return null;
+            }
         }
-        public List<Course> Search_Course(string key)
+        public List<CourseModel> Search_Course(string key)
         {
-            return db.Course.Where(x => x.Name.Contains(key)).ToList();
+            try
+            {
+                var course = ApiClientFactory.KimAnhInstance.GetAllCourse();
+                return course.Where(x => x.Name.Contains(key)).ToList();
+            }
+            catch
+            {
+                return null;
+            }
+           
         }
 
         public bool check_id(string id)
