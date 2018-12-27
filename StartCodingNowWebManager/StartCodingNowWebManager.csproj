@@ -5,6 +5,114 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Class\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Class\Sua.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Class\Them.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Course\Course.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Course\Sua.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Course\Them.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\GiaoVien\GiaoVien.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\GiaoVien\Sua.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\GiaoVien\Them.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Home\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Login\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\OrderRoBo\Details.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\OrderRoBo\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Phanbo_giangday\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Rigistration_course\Create.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Rigistration_course\Delete.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Rigistration_course\Details.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Rigistration_course\Edit.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Rigistration_course\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\RoBo\RoBo.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\RoBo\Sua.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\RoBo\Them.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Shared\_LayoutADD.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Student\ChonLop.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Student\Student.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Student\Sua.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Student\Them.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\Teaching_class\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\TinTuc\AddArticle.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\TinTuc\EditAr.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\TinTuc\EditArticle.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\TinTuc\ListAr.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\TinTuc\PartialListAr.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\TinTuc\ShowAr.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\_ViewImports.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\ADMIN\Views\_ViewStart.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\GIAOVIEN\Views\Chamcong\Create.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\GIAOVIEN\Views\Chamcong\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\GIAOVIEN\Views\Chamcong\Luong.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\GIAOVIEN\Views\Chamcong\Update.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\GIAOVIEN\Views\Diemdanh\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\GIAOVIEN\Views\Diemdanh\UpdateDiemdanh.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\GIAOVIEN\Views\DShocvien\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\GIAOVIEN\Views\Login\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\GIAOVIEN\Views\lophoc\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\GIAOVIEN\Views\matkhau\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\GIAOVIEN\Views\Shared\_Layout.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\GIAOVIEN\Views\thongtin\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\GIAOVIEN\Views\_ViewImports.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\GIAOVIEN\Views\_ViewStart.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\Cart\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\Cart\ThanhToan.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\Home\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\Home\ListNews_Course.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\Home\ListNews_SP.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\KhoaHoc\ChiTiet.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\KhoaHoc\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\KhoaHoc\Register.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\RoBo\Detail.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\RoBo\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\RoBo\Top3_Product.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\Shared\Header_Cart.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\Shared\Rating.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\Shared\RatingShow.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\Shared\_Layout.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\Shared\_LeftMenu.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\TinTuc\Aredit.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\TinTuc\Detail.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\TinTuc\EditAr.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\TinTuc\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\TinTuc\InNewscate.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\TinTuc\ListAr.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\TinTuc\ListNews.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\TinTuc\ListNews_1.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\TinTuc\Menu.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\TinTuc\PartialListAr.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\TinTuc\ShowAr.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\TinTuc\TrangChu.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\Vechungtoi\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\XemDonHang\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\XemDonHang\ViewDetail.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\_ViewImports.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Areas\USER\Views\_ViewStart.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.g.cshtml.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.RazorAssemblyInfo.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.RazorTargetAssemblyInfo.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\netcoreapp2.2\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\netcoreapp2.2\StartCodingNowWebManager.deps.json" />
+    <Content Include="bin\Debug\netcoreapp2.2\StartCodingNowWebManager.runtimeconfig.dev.json" />
+    <Content Include="bin\Debug\netcoreapp2.2\StartCodingNowWebManager.runtimeconfig.json" />
+    <Content Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\project.assets.json" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -19,6 +127,31 @@
 
   <ItemGroup>
     <Folder Include="ApiCommunicationModels\HongHeoAPI\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="bin\Debug\netcoreapp2.2\StartCodingNowWebManager.dll" />
+    <None Include="bin\Debug\netcoreapp2.2\StartCodingNowWebManager.pdb" />
+    <None Include="bin\Debug\netcoreapp2.2\StartCodingNowWebManager.Views.dll" />
+    <None Include="bin\Debug\netcoreapp2.2\StartCodingNowWebManager.Views.pdb" />
+    <None Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.assets.cache" />
+    <None Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.csproj.CopyComplete" />
+    <None Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.csprojAssemblyReference.cache" />
+    <None Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.dll" />
+    <None Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.pdb" />
+    <None Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.RazorAssemblyInfo.cache" />
+    <None Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.RazorCoreGenerate.cache" />
+    <None Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.RazorTargetAssemblyInfo.cache" />
+    <None Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.TagHelpers.input.cache" />
+    <None Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.TagHelpers.output.cache" />
+    <None Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.Views.dll" />
+    <None Include="obj\Debug\netcoreapp2.2\StartCodingNowWebManager.Views.pdb" />
+    <None Include="obj\StartCodingNowWebManager.csproj.nuget.cache" />
+    <None Include="obj\StartCodingNowWebManager.csproj.nuget.g.props" />
+    <None Include="obj\StartCodingNowWebManager.csproj.nuget.g.targets" />
   </ItemGroup>
 
 </Project>
